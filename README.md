@@ -1,10 +1,10 @@
 <p align="center">
-  <img src="extras/logo.png" alt="OwnTV" width="360">
+  <img src="app/src/main/res/drawable-xhdpi/tv_banner.png" alt="DeodatoTV" width="720">
 </p>
 
 <p align="center">
-  <b>Your own IPTV player for Android TV</b><br>
-  <sub>Fast · modern · remote-first — bring your own M3U, Xtream or Stalker (MAC) sources</sub>
+  <b>Mais que TV, é a tua TV</b><br>
+  <sub>Um player IPTV moderno para Android TV — traz as tuas próprias fontes M3U, Xtream ou Stalker (MAC)</sub>
 </p>
 
 <p align="center">
@@ -14,32 +14,31 @@
   <img alt="Player" src="https://img.shields.io/badge/engines-libmpv%20%2B%20ExoPlayer-FB8C00">
   <img alt="License" src="https://img.shields.io/badge/license-GPLv3-blue">
   <img alt="Built with the help of AI" src="https://img.shields.io/badge/built%20with-the%20help%20of%20AI-8A2BE2">
-  <a href="https://hosted.weblate.org/engage/owntv/">
-    <img alt="Translation status" src="https://hosted.weblate.org/widget/owntv/svg-badge.svg">
-  </a>
+  <img alt="Brand" src="https://img.shields.io/badge/brand-DeodatoTV-00D8FF">
 </p>
 
 <p align="center">
-  <a href="https://github.com/ahXN00/OwnTV/actions/workflows/android.yml">
-    <img alt="Android CI" src="https://github.com/ahXN00/OwnTV/actions/workflows/android.yml/badge.svg">
+  <a href="https://github.com/DeodatoSebasti1/DeodatoTV/actions/workflows/android.yml">
+    <img alt="Android CI" src="https://github.com/DeodatoSebasti1/DeodatoTV/actions/workflows/android.yml/badge.svg">
   </a>
 </p>
 
 ---
 
-OwnTV is a native **Android TV** IPTV **player** built with Kotlin, Jetpack Compose for TV, and a
+DeodatoTV is a native **Android TV** IPTV **player** built with Kotlin, Jetpack Compose for TV, and a
 **dual playback engine** — **libmpv (FFmpeg)** for movies/series and maximum compatibility, **ExoPlayer
 (Media3)** for near-instant Live TV. It's a *player only* — you bring your own Xtream login, M3U playlist
 (by **URL or a local `.m3u`/`.m3u8` file** on the device), or **Stalker/Ministra portal (Portal URL + MAC,
-with optional Serial Number, Device IDs, and Signature)**, and OwnTV gives you a fast, modern,
+with optional Serial Number, Device IDs, and Signature)**, and DeodatoTV gives you a fast, modern,
 remote-first way to browse and watch them.
 
-> ⚠️ OwnTV does **not** provide any channels, playlists, subscriptions, streams, or media content.
+> ⚠️ DeodatoTV does **not** provide any channels, playlists, subscriptions, streams, or media content.
 > You are responsible for adding your own legally accessible sources.
 
-This is an **open-source** project — the code is original (not derived from any other app) and was
-**built with the help of AI**. **Contributions are welcome**: clone, build, and test it freely. It
-targets **Android TV only** (leanback launcher, D-pad-first UI).
+This is an **open-source GPLv3** Android TV project. DeodatoTV is currently a branded fork/rebrand of
+OwnTV, keeping the legal credits, GPL licence, and internal package names that are still required during
+the transition. **Contributions are welcome**: clone, build, and test it freely. It targets
+**Android TV only** (leanback launcher, D-pad-first UI).
 
 > ### 📖 New here? Read the [**User Guide & Hidden Features →**](extras/USER_GUIDE.md)
 > Long‑press to favourite, **Left** for the channel list (**Left** again to browse categories) and
@@ -51,13 +50,10 @@ targets **Android TV only** (leanback launcher, D-pad-first UI).
 
 ## 💬 Community
 
-Questions, ideas, bug reports — or just want to follow along? **Join the OwnTV Telegram group:**
+Questions, ideas, bug reports — or just want to follow along? Open an issue or pull request in this
+repository:
 
-### 👉 [t.me/owntvplayer](https://t.me/owntvplayer)
-
-Scan to join from your phone:
-
-<a href="https://t.me/owntvplayer"><img src="extras/telegram_qr_code.jpg" alt="Scan to join the OwnTV Telegram group" width="170"></a>
+### 👉 [github.com/DeodatoSebasti1/DeodatoTV](https://github.com/DeodatoSebasti1/DeodatoTV)
 
 ---
 
@@ -171,6 +167,10 @@ More in **[extras/screenshots/](extras/screenshots/)** — playlist management, 
 
 `minSdk 26`, `targetSdk 36`, `compileSdk 37`, `applicationId tv.own.owntv`.
 
+> **Rebrand note:** DeodatoTV is the visible app/brand name. Some technical identifiers intentionally
+> remain `tv.own.owntv` while the rebrand is staged, so existing storage, integrations and core modules
+> keep working without a database migration.
+
 > **Build note:** there is no `kotlin-android` plugin. AGP 9 ships its own Kotlin, but the Compose
 > compiler plugin pulls the Kotlin Gradle plugin up to the `kotlin` version pinned in
 > `gradle/libs.versions.toml` — that is what actually compiles the app, so keep the Compose compiler
@@ -201,14 +201,14 @@ backup, settings storage, the playback engines and every translated string — l
 core library that a future mobile app will share.
 
 ```
-OwnTV/  (this repo)
+DeodatoTV/  (this repo)
 tv.own.owntv/
 ├── player/      the TV player HUD, surfaces and mini-player
 ├── ui/          theme + reusable components (focus surface, cards, state views, avatars)
 ├── features/    setup, shell, live, movies, series, search, downloads, epg, profiles, settings
 └── di/          Koin modules
 
-OwnTV_Core/  (separate repository, published as tv.own.owntv:core / :player-core)
+DeodatoTV_Core / OwnTV_Core  (separate core repository, published as tv.own.owntv:core / :player-core)
 ├── core/        database (Room), network, parser (M3U/Xtream/XMLTV), stalker (MAC portal), repository, sync, util, strings
 └── player-core/ libmpv + ExoPlayer engines (PlaybackEngine), fallback ladder, watchdogs, diagnostics
 ```
@@ -218,40 +218,36 @@ OwnTV_Core/  (separate repository, published as tv.own.owntv:core / :player-core
 - 📄 **[Complete Feature Document](extras/OwnTV_Complete_Brief_Plan_With_Logo.docx)** — the full
   as-built feature reference: playback, browse, EPG, profiles, architecture, and tech stack.
 - 📺 **[Player design reference](extras/player.html)** — an interactive Material 3 mockup of the player UI.
-- 🖼️ `extras/logo.png` — the OwnTV logo.
+- 🖼️ `app/src/main/res/drawable-xhdpi/tv_banner.png` — the DeodatoTV TV banner used at the top of this README.
 
 ## 📥 Installing (Fire TV / Android TV)
 
-Grab the signed APK from the [**latest release**](https://github.com/ahXN00/OwnTV/releases/latest) and
-sideload it. A fixed link always points at the newest signed build:
+Grab the signed APK from the [**latest release**](https://github.com/DeodatoSebasti1/DeodatoTV/releases/latest)
+when releases are published, or build a debug APK locally from source and sideload it.
 
 ```
-https://github.com/ahXN00/OwnTV/releases/latest/download/OwnTV.apk
+https://github.com/DeodatoSebasti1/DeodatoTV/releases/latest
 ```
 
-- **Fire TV** — install the **Downloader** app (by AFTVnews) from the Amazon Appstore, then enter the
-  **Downloader code `4308278`** (or [`aftv.news/4308278`](https://aftv.news/4308278), which always
-  points at the latest signed `OwnTV.apk`). Enable *Apps from Unknown Sources* if prompted.
-- **Android TV / Google TV** — the **Downloader** app is also on Google Play, so the same code
-  **`4308278`** works here too. (If Downloader doesn't show in search, open the Play Store on the TV —
-  you can reach it via *Settings → Apps → See all apps → Show system apps → Google Play Store* — and
-  install it from there.) Or just sideload the APK with your tool of choice (*Send files to TV*, a USB
-  drive, or `adb install OwnTV.apk`).
+- **Fire TV** — install the **Downloader** app (by AFTVnews) from the Amazon Appstore, enable
+  *Apps from Unknown Sources* if prompted, and download the APK from this repository's Releases page.
+- **Android TV / Google TV** — sideload the APK with your tool of choice: *Send files to TV*, a USB
+  drive, Downloader, or `adb install`.
 
-> Only install the APK from this repository's official Releases (or the `…/releases/latest/download/OwnTV.apk`
-> link above). It's the build signed by this project's CI — third-party re-hosts aren't endorsed.
+> Only install APKs from this repository's official Releases or from a local build you created yourself.
+> Third-party re-hosts are not endorsed.
 >
-> Releases ship **two APKs**: `OwnTV-vX.X.X.apk` / `OwnTV.apk` (arm: `arm64-v8a` + `armeabi-v7a` — for
-> all real Fire TV / Android TV devices, and what the Downloader code fetches), and
-> `OwnTV-x86_64-vX.X.X.apk` (for emulators / rare Intel boxes). Real devices always want the arm build.
+> Release/debug builds use **two APK flavors**: `standard` (arm: `arm64-v8a` + `armeabi-v7a` — for all
+> real Fire TV / Android TV devices) and `x86_64` (for emulators / rare Intel boxes). Real devices
+> always want the `standard` build.
 
 ## 🛠️ Building & running
 
 > Only needed if you want to build from source. Most people can just **[install the ready-made APK](#-installing-fire-tv--android-tv)** instead — no build tools required.
 
-> **One extra step before the first build: a GitHub token.** Half of the app — the database, the
+> **One extra step before the first build: a GitHub token may be required.** Half of the app — the database, the
 > playlist importing and the whole playback engine — lives in the separate
-> [OwnTV_Core](https://github.com/ahXN00/OwnTV_Core) repository and is pulled in as a library from
+> OwnTV_Core/DeodatoTV_Core repository and can be pulled in as a library from
 > GitHub Packages. That registry always asks who you are, even for public packages, so a clone of
 > this repo fails Gradle sync with a `401` until you do step 2 below. Installing and using the
 > ready-made APK needs none of this.
@@ -261,7 +257,7 @@ https://github.com/ahXN00/OwnTV/releases/latest/download/OwnTV.apk
 - A build target: either a real **Android TV / Fire TV** device (with USB or wireless debugging turned on), or an **Android TV emulator** created from Android Studio's Device Manager.
 
 **Steps**
-1. **Get the code** — click the green **Code** button on GitHub → *Download ZIP* (and unzip it), or run `git clone https://github.com/ahXN00/OwnTV.git`.
+1. **Get the code** — click the green **Code** button on GitHub → *Download ZIP* (and unzip it), or run `git clone https://github.com/DeodatoSebasti1/DeodatoTV.git`.
 2. **Let Gradle read the core library** — create a [personal access token (classic)](https://github.com/settings/tokens) with the single scope **`read:packages`**, then add it to `~/.gradle/gradle.properties` (`C:\Users\<you>\.gradle\gradle.properties` on Windows) — never inside the project:
    ```properties
    gpr.user=your-github-username
@@ -286,9 +282,11 @@ Contributions, bug reports, and ideas are welcome — open an issue or a pull re
 project's player-only, bring-your-own-source positioning, and match the existing code style.
 
 <!-- i18n-contribution:start -->
-## Help translate OwnTV
+## Help translate DeodatoTV
 
-If your language is already available, contribute interface translations across OwnTV's six Android resource components on [Hosted Weblate](https://hosted.weblate.org/projects/owntv/). If it is not listed, [open a language request ticket](https://github.com/ahXN00/OwnTV/issues/new?template=feature_request.yml&title=%5BLanguage%5D%20Add%20) first. A maintainer will review the request, register the locale, and prepare its base translation files on Hosted Weblate. Once the language appears on Hosted Weblate, you can start translating it there. The strings themselves live in [OwnTV's core library repository](https://github.com/ahXN00/OwnTV_Core), together with the language contributor guide covering identifiers, validation, and promotion policy.
+Interface translations currently come from the core library inherited from OwnTV. During the rebrand,
+new DeodatoTV-facing strings live in this app repo while shared strings continue to be maintained in
+the core resource components.
 <!-- i18n-contribution:end -->
 
 
@@ -327,7 +325,7 @@ Thank you to all their maintainers. See each project for its own license.
 
 ## ⚖️ Legal
 
-OwnTV is a media **player** only. It ships with no channels, playlists, subscriptions, or content, and
+DeodatoTV is a media **player** only. It ships with no channels, playlists, subscriptions, or content, and
 does not endorse or facilitate access to unauthorized streams. Users are solely responsible for the
 sources they add and for complying with the laws and rights that apply to them.
 
@@ -335,10 +333,11 @@ sources they add and for complying with the laws and rights that apply to them.
 
 Released under the **GNU General Public License v3.0 (GPLv3)** — see [LICENSE](LICENSE).
 
-In short: you're free to use, study, modify, and redistribute OwnTV, including commercially — but any
+In short: you're free to use, study, modify, and redistribute DeodatoTV, including commercially — but any
 redistributed version (including forks and commercial products built on it) must also be licensed under
 GPLv3 and its source made available.
 
 ---
 
-<sub>OwnTV is an open-source, player-only project, built with the help of AI.</sub>
+<sub>DeodatoTV is an open-source, player-only Android TV project. It preserves the GPLv3 licence and
+legal credits of the OwnTV project it is being rebranded from.</sub>

@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+    <!-- App-local branding overlay. Technical resource names stay compatible with OwnTV_Core. -->
+    <string name="local_sync_browser_body">This address is for the DeodatoTV app on your other device. Open Local sync there and pick this device from the list.</string>
+    <string name="local_sync_browser_title">DeodatoTV local sync</string>
+    <string name="local_sync_error_unreachable">This device could not be reached. On it, open DeodatoTV → Settings → Data → Local sync and turn Sync mode on. Both devices must be on the same Wi-Fi.</string>
+</resources>

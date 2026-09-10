@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+    <!-- App-local branding overlay. Technical resource names stay compatible with OwnTV_Core. -->
+    <string name="common_own_tv_user">DeodatoTV-bruger</string>
+    <string name="companion_add_page_title">DeodatoTV — Tilføj kilde</string>
+    <string name="companion_backup_description">Vælg en DeodatoTV-sikkerhedskopifil (.own eller en ældre .json-fil), og tryk på Send. Den overføres til tv\'et — tag fjernbetjeningen, og vælg dér, hvad der skal gendannes.</string>
+    <string name="companion_backup_page_title">DeodatoTV — Gendan sikkerhedskopi</string>
+    <string name="companion_download_description">Dit tv har klargjort en sikkerhedskopifil til DeodatoTV. Tryk på knappen for at gemme den på denne enhed (owntv-backup.own). Opbevar den et sikkert sted — du kan gendanne fra den senere.</string>
+    <string name="companion_download_page_title">DeodatoTV — Download sikkerhedskopi</string>
+    <string name="companion_image_page_title">DeodatoTV — Baggrundsbillede</string>
+    <string name="companion_pin_page_title">DeodatoTV — Indtast PIN</string>
+    <string name="companion_saved_page_title">DeodatoTV — Sendt</string>
+    <string name="content_epg_own_player">DeodatoTV-afspiller</string>
+    <string name="content_exit_owntv">Afslut DeodatoTV?</string>
+    <string name="local_sync_browser_body">Denne adresse er til DeodatoTV-appen på din anden enhed. Åbn Lokal synkronisering der, og vælg denne enhed på listen.</string>
+    <string name="local_sync_browser_title">DeodatoTV lokal synkronisering</string>
+    <string name="local_sync_error_unreachable">Enheden kunne ikke nås. Åbn DeodatoTV → Indstillinger → Data → Lokal synkronisering på den, og slå Synkroniseringstilstand til. Begge enheder skal være på samme Wi-Fi.</string>
+    <string name="recovery_title">DeodatoTV kunne ikke åbne sin database</string>
+    <string name="settings_about_license">DeodatoTV · © 2026 OwnTV · GPLv3-licens</string>
+    <string name="settings_app_startup_description">Hvad DeodatoTV åbner ved start</string>
+    <string name="settings_auto_frame_rate_warning_description">Denne enhed kører Android <xliff:g id="android_version">%1$s</xliff:g>. Under Android 12 kan TV\'et ikke fortælle DeodatoTV, hvilke opdateringshastigheder det kan skifte problemfrit imellem, så en ændring af hastigheden kan få skærmen til at blive sort i et sekund eller to — sommetider mere end én gang under et program.\n\nVi anbefaler at lade Auto-billedhastighed være slået fra her. Hvis dit TV skifter problemfrit, kan du slå det til og se: du kan altid skifte tilbage.</string>
+    <string name="settings_catchup_player_internal">DeodatoTV-afspiller</string>
+    <string name="settings_dns_toggle_description">Foretag alle DeodatoTV-domæneopslag via en brugerdefineret DNS-server.</string>
+    <string name="settings_language_contribution_description">Scan QR-koden, eller åbn linket for at vælge et hvilket som helst tilgængeligt sprog og bidrage på tværs af alle seks DeodatoTV-oversættelseskomponenter.</string>
+    <string name="settings_language_contribution_qr_description">QR-kode til DeodatoTV-oversættelsesprojektets oversigt</string>
+    <string name="settings_language_help_translate">Hjælp med at oversætte DeodatoTV til dit sprog</string>
+    <string name="settings_live_tune_timeout_description">Hvis en live-kanal ikke har vist billede inden for denne tid, holder DeodatoTV op med at prøve og siger det til dig i stedet for at efterlade en sort skærm, mens den arbejder sig gennem alle sine afspillere. “Aldrig” bliver ved med at prøve, hvilket kan tage langt over et minut på en kanal, din udbyder har fjernet. Ventetid, som udbyderen selv beder om, tælles ikke med.</string>
+    <string name="settings_metadata_clear_advanced_message">Din TMDB API-nøgle og adressen på din egen server slettes fra denne enhed, og DeodatoTV vender tilbage til den indbyggede fælles tjeneste med dens daglige andel.</string>
+    <string name="settings_metadata_fair_share">Den indbyggede metadatatjeneste deles af alle, der bruger DeodatoTV, så hver enhed får sin egen andel hver dag. Hvis du bruger din andel op, sættes plakater og beskrivelser på pause, indtil den fyldes op igen — oplysningerne fra din egen playliste fungerer som normalt. At tilføje din egen TMDB API-nøgle eller server fjerner grænsen: det er gratis, og en personlig nøgle har praktisk talt ingen grænse.</string>
+    <string name="settings_metadata_shared_worker_description">DeodatoTV Worker · ingen opsætning</string>
+    <string name="settings_open_subtitles_access_priority">Lad begge felter være tomme for at bruge DeodatoTV’s delte Worker. En egen Worker-URL har forrang for en direkte API-nøgle. Kontosessioner er fortsat profilspecifikke.</string>
+    <string name="settings_proxy_description">Send al trafik og afspilning fra DeodatoTV gennem en HTTP-proxy.</string>
+    <string name="settings_restore_remote_description">Scan QR-koden på en telefon, tablet eller computer på samme Wi-Fi (eller åbn URL\'en), indtast denne PIN, vælg din DeodatoTV-sikkerhedskopifil, og tryk på Send til tv. Derefter vælger du her, hvad der skal gendannes.</string>
+    <string name="settings_surround_forced_description">Surround – send Dolby/DTS til en ægte 5.1/7.1-modtager. Hvis lyden forsvinder eller hakker, falder DeodatoTV stadig tilbage til stereo og fortæller dig det.</string>
+    <string name="setup_byo_source_description">DeodatoTV er en afspiller — tilføj din egen Xtream-, M3U- eller Stalker-kilde.</string>
+    <string name="setup_disclaimer">DeodatoTV er udelukkende en medieafspiller. Den indeholder ingen kanaler, afspilningslister eller noget indhold. Du er selv ansvarlig for at tilføje dine egne Xtream-, M3U- eller Stalker-kilder, som du har lovlig adgang til.</string>
+    <string name="setup_set_up_owntv">Konfigurer DeodatoTV</string>
+    <string name="update_ready">DeodatoTV v<xliff:g id="available">%1$s</xliff:g> er klar (du har v<xliff:g id="current">%2$s</xliff:g>).</string>
+</resources>

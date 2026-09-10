@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+    <!-- App-local branding overlay. Technical resource names stay compatible with OwnTV_Core. -->
+    <string name="common_own_tv_user">DeodatoTV 使用者</string>
+    <string name="companion_add_page_title">DeodatoTV — 新增來源</string>
+    <string name="companion_backup_description">選擇 DeodatoTV 備份檔案（.own 或較舊的 .json）並按下「傳送」。檔案會傳輸至電視，請拿起遙控器並在電視上選擇要還原的內容。</string>
+    <string name="companion_backup_page_title">DeodatoTV — 還原備份</string>
+    <string name="companion_download_description">您的電視已準備好 DeodatoTV 備份檔案。點選按鈕，將檔案儲存到此裝置（owntv-backup.own）。請妥善保管，之後可用它進行還原。</string>
+    <string name="companion_download_page_title">DeodatoTV — 下載備份</string>
+    <string name="companion_image_page_title">DeodatoTV — 背景圖片</string>
+    <string name="companion_pin_page_title">DeodatoTV — 輸入 PIN</string>
+    <string name="companion_saved_page_title">DeodatoTV — 已傳送</string>
+    <string name="content_epg_own_player">DeodatoTV 播放器</string>
+    <string name="content_exit_owntv">要結束 DeodatoTV 嗎？</string>
+    <string name="local_sync_browser_body">此位址供你另一部裝置上的 DeodatoTV 應用程式使用。請在那裡開啟「本機同步」，並從清單中選擇本機。</string>
+    <string name="local_sync_browser_title">DeodatoTV 本機同步</string>
+    <string name="local_sync_error_unreachable">無法連線到該裝置。請在那部裝置上開啟 DeodatoTV → 設定 → 資料 → 本機同步，並開啟同步模式。兩部裝置必須連線同一個 Wi-Fi。</string>
+    <string name="recovery_title">DeodatoTV 無法開啟其資料庫</string>
+    <string name="settings_about_license">DeodatoTV · © 2026 OwnTV · GPLv3 授權條款</string>
+    <string name="settings_app_startup_description">DeodatoTV 啟動時開啟的內容</string>
+    <string name="settings_auto_frame_rate_warning_description">此裝置執行的是 Android <xliff:g id="android_version">%1$s</xliff:g>。在 Android 12 以下，電視無法告知 DeodatoTV 它可以順暢切換到哪些更新率，因此切換更新率可能會讓畫面變黑一兩秒——有時在節目播放期間還會發生不只一次。\n\n我們建議在此保持自動更新率關閉。如果你的電視切換得很順暢，不妨開啟試試看：你隨時都可以改回來。</string>
+    <string name="settings_catchup_player_internal">DeodatoTV 播放器</string>
+    <string name="settings_dns_toggle_description">透過自訂 DNS 伺服器解析 DeodatoTV 的所有網域查詢。</string>
+    <string name="settings_language_contribution_description">掃描 QR Code 或開啟連結，即可選擇任何可用語言，並在 DeodatoTV 全部六個翻譯元件中貢獻翻譯。</string>
+    <string name="settings_language_contribution_qr_description">DeodatoTV 翻譯專案總覽的 QR Code</string>
+    <string name="settings_language_help_translate">協助將 DeodatoTV 翻譯成你的語言</string>
+    <string name="settings_live_tune_timeout_description">若直播頻道在此時間內仍未出現畫面，DeodatoTV 會停止嘗試並告知你，而不是一邊逐一試遍所有播放器、一邊留著黑畫面。選擇「永不」會一直嘗試，在供應商已下架的頻道上可能遠超過一分鐘。供應商自己要求的等待時間不計入其中。</string>
+    <string name="settings_metadata_clear_advanced_message">你的 TMDB API 金鑰與自有伺服器位址將從此裝置刪除，DeodatoTV 將回到帶有每日額度的內建共用服務。</string>
+    <string name="settings_metadata_fair_share">內建中繼資料服務由所有 DeodatoTV 使用者共用，因此每部裝置每天都有自己的額度。用完額度後，海報與簡介會暫停顯示，直到額度恢復；播放清單自帶的資訊不受影響。加入你自己的 TMDB API 金鑰或伺服器即可解除此限制：它是免費的，而且個人金鑰幾乎沒有限制。</string>
+    <string name="settings_metadata_shared_worker_description">DeodatoTV Worker · 無需設定</string>
+    <string name="settings_open_subtitles_access_priority">兩項都留空即使用 DeodatoTV 的共用 Worker。自訂 Worker 網址優先於直接填寫的 API 金鑰。帳號登入狀態仍依設定檔分別儲存。</string>
+    <string name="settings_proxy_description">透過 HTTP 代理伺服器傳送所有 DeodatoTV 流量及播放內容。</string>
+    <string name="settings_restore_remote_description">在連接至相同 Wi-Fi 的手機、平板或電腦上掃描 QR 圖碼（或開啟網址），輸入此 PIN，選擇您的 DeodatoTV 備份檔案，然後點選「傳送至電視」。接著您可在此選擇要還原的內容。</string>
+    <string name="settings_surround_forced_description">環繞音效 — 將 Dolby/DTS 傳送至實體的 5.1/7.1 環繞擴大機。如果出現無聲或卡頓，DeodatoTV 仍會自動切回立體聲並通知你。</string>
+    <string name="setup_byo_source_description">DeodatoTV 是一款播放器，請自行提供 Xtream、M3U 或 Stalker 來源。</string>
+    <string name="setup_disclaimer">DeodatoTV 僅為媒體播放器，不包含任何頻道、播放清單或內容。您有責任自行新增可合法存取的 Xtream、M3U 或 Stalker 來源。</string>
+    <string name="setup_set_up_owntv">設定 DeodatoTV</string>
+    <string name="update_ready">DeodatoTV v<xliff:g id="available">%1$s</xliff:g> 已準備就緒（目前為 v<xliff:g id="current">%2$s</xliff:g>）。</string>
+</resources>

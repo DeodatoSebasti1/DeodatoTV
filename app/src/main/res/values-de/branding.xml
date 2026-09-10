@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+    <!-- App-local branding overlay. Technical resource names stay compatible with OwnTV_Core. -->
+    <string name="common_own_tv_user">DeodatoTV-Nutzer</string>
+    <string name="companion_add_page_title">DeodatoTV — Quelle hinzufügen</string>
+    <string name="companion_backup_description">Wähle eine DeodatoTV-Sicherungsdatei (.own oder eine ältere .json-Datei) aus und drücke auf „Senden“. Sie wird auf den TV übertragen — nimm die Fernbedienung und wähle dort aus, was wiederhergestellt werden soll.</string>
+    <string name="companion_backup_page_title">DeodatoTV — Sicherung wiederherstellen</string>
+    <string name="companion_download_description">Ihr Fernseher hat eine DeodatoTV-Sicherungsdatei vorbereitet. Tippen Sie auf die Schaltfläche, um sie auf diesem Gerät zu speichern (owntv-backup.own). Bewahren Sie sie an einem sicheren Ort auf — Sie können Ihre Daten später daraus wiederherstellen.</string>
+    <string name="companion_download_page_title">DeodatoTV — Sicherung herunterladen</string>
+    <string name="companion_image_page_title">DeodatoTV — Hintergrundbild</string>
+    <string name="companion_pin_page_title">DeodatoTV — PIN eingeben</string>
+    <string name="companion_saved_page_title">DeodatoTV — Gesendet</string>
+    <string name="content_epg_own_player">DeodatoTV-Player</string>
+    <string name="content_exit_owntv">DeodatoTV beenden?</string>
+    <string name="local_sync_browser_body">Diese Adresse ist für die DeodatoTV-App auf deinem anderen Gerät. Öffne dort die lokale Synchronisierung und wähle dieses Gerät aus der Liste.</string>
+    <string name="local_sync_browser_title">DeodatoTV lokale Synchronisierung</string>
+    <string name="local_sync_error_unreachable">Dieses Gerät war nicht erreichbar. Öffne dort DeodatoTV → Einstellungen → Daten → Lokale Synchronisierung und schalte den Synchronisierungsmodus ein. Beide Geräte müssen im selben WLAN sein.</string>
+    <string name="recovery_title">DeodatoTV konnte seine Datenbank nicht öffnen</string>
+    <string name="settings_about_license">DeodatoTV · © 2026 OwnTV · GPLv3-Lizenz</string>
+    <string name="settings_app_startup_description">Was DeodatoTV beim Start öffnet</string>
+    <string name="settings_auto_frame_rate_warning_description">Auf diesem Gerät läuft Android <xliff:g id="android_version">%1$s</xliff:g>. Vor Android 12 kann der Fernseher DeodatoTV nicht mitteilen, zu welchen Bildwiederholraten er fließend wechseln kann. Daher kann der Bildschirm beim Wechsel der Bildwiederholrate für ein oder zwei Sekunden schwarz werden – manchmal mehr als einmal während einer Sendung.\n\nWir empfehlen, die automatische Bildwiederholrate hier deaktiviert zu lassen. Wenn Ihr Fernseher sauber umschaltet, aktivieren Sie sie und sehen Sie selbst: Sie können die Einstellung jederzeit wieder ändern.</string>
+    <string name="settings_catchup_player_internal">DeodatoTV-Player</string>
+    <string name="settings_dns_toggle_description">Alle Domainabfragen von DeodatoTV über einen benutzerdefinierten DNS-Server auflösen.</string>
+    <string name="settings_language_contribution_description">Scannen Sie den QR-Code oder öffnen Sie den Link, um eine beliebige verfügbare Sprache auszuwählen und in allen sechs Übersetzungsbereichen von DeodatoTV mitzuwirken.</string>
+    <string name="settings_language_contribution_qr_description">QR-Code für die Übersicht des DeodatoTV-Übersetzungsprojekts</string>
+    <string name="settings_language_help_translate">Hilf mit, DeodatoTV in deine Sprache zu übersetzen</string>
+    <string name="settings_live_tune_timeout_description">Zeigt ein Live-Sender bis dahin kein Bild, hört DeodatoTV auf und sagt Ihnen Bescheid, statt einen schwarzen Bildschirm stehen zu lassen, während nacheinander alle Player durchprobiert werden. „Nie“ probiert weiter, was bei einem vom Anbieter entfernten Sender deutlich über eine Minute dauern kann. Wartezeiten, die Ihr Anbieter selbst verlangt, zählen nicht mit.</string>
+    <string name="settings_metadata_clear_advanced_message">Ihr TMDB-API-Schlüssel und die Adresse Ihres eigenen Servers werden von diesem Gerät gelöscht, und DeodatoTV kehrt zum integrierten gemeinsamen Dienst mit seinem Tagesanteil zurück.</string>
+    <string name="settings_metadata_fair_share">Der integrierte Metadatendienst wird von allen DeodatoTV-Nutzern gemeinsam genutzt, daher erhält jedes Gerät täglich seinen eigenen Anteil. Wenn Ihr Anteil aufgebraucht ist, pausieren Poster und Beschreibungen, bis er wieder aufgefüllt wird — die Informationen aus Ihrer eigenen Playlist funktionieren weiterhin normal. Ein eigener TMDB-API-Schlüssel oder Server hebt diese Beschränkung auf: Er ist kostenlos, und ein persönlicher Schlüssel hat praktisch kein Limit.</string>
+    <string name="settings_metadata_shared_worker_description">DeodatoTV Worker · keine Einrichtung</string>
+    <string name="settings_open_subtitles_access_priority">Lasse beide Felder leer, um den gemeinsamen Worker von DeodatoTV zu nutzen. Eine eigene Worker-URL hat Vorrang vor einem direkten API-Schlüssel. Kontositzungen bleiben profilspezifisch.</string>
+    <string name="settings_proxy_description">Den gesamten Datenverkehr und die gesamte Wiedergabe von DeodatoTV über einen HTTP-Proxy leiten.</string>
+    <string name="settings_restore_remote_description">Scanne auf einem Telefon, Tablet oder Computer im selben Wi-Fi den QR-Code (oder öffne die URL), gib diese PIN ein, wähle deine DeodatoTV-Sicherungsdatei aus und tippe auf „An TV senden“. Anschließend wählst du hier aus, was wiederhergestellt werden soll.</string>
+    <string name="settings_surround_forced_description">Surround — Dolby/DTS an einen echten 5.1/7.1-Receiver ausgeben. Wenn der Ton ausfällt oder ruckelt, wechselt DeodatoTV trotzdem zu Stereo und informiert dich.</string>
+    <string name="setup_byo_source_description">DeodatoTV ist ein Player — füge deine eigene Xtream-, M3U- oder Stalker-Quelle hinzu.</string>
+    <string name="setup_disclaimer">DeodatoTV ist ausschließlich ein Medienplayer. Die App enthält keine Sender, Wiedergabelisten oder Inhalte. Du bist selbst dafür verantwortlich, deine eigenen legal zugänglichen Xtream-, M3U- oder Stalker-Quellen hinzuzufügen.</string>
+    <string name="setup_set_up_owntv">DeodatoTV einrichten</string>
+    <string name="update_ready">DeodatoTV v<xliff:g id="available">%1$s</xliff:g> ist bereit (du verwendest v<xliff:g id="current">%2$s</xliff:g>).</string>
+</resources>

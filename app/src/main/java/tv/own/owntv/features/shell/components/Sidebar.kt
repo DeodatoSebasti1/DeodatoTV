@@ -10,6 +10,7 @@ import androidx.compose.animation.core.tween
 import androidx.compose.foundation.background
 import androidx.compose.foundation.basicMarquee
 import androidx.compose.foundation.border
+import androidx.compose.foundation.Image
 import androidx.compose.foundation.focusGroup
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
@@ -44,6 +45,7 @@ import androidx.compose.ui.focus.focusRequester
 import androidx.compose.ui.focus.onFocusChanged
 import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
@@ -306,25 +308,14 @@ private fun NowPlayingItem(
     }
 }
 
-/**
- * Brand mark at the top of the rail — the cyan play-triangle inside a rounded-square outline, the same
- * geometry as [ic_launcher_foreground] (kept consistent with the planned branded splash). Drawn from
- * [OwnTVIcon.PLAY] (filled) inside an outlined [Box] so it matches the visual weight of the 56dp avatar
- * below. Decorative only: a plain Box is not focusable, so it neither captures D-pad focus nor traps an
- * "up" press. Tints with [OwnTVTheme.colors].primary so it follows the user's accent like the nav icons.
- */
+/** Official DeodatoTV portrait/play mark. Decorative only, so it never captures D-pad focus. */
 @Composable
 private fun AppLogo(modifier: Modifier = Modifier) {
-    val colors = OwnTVTheme.colors
-    Box(
-        modifier = modifier
-            .size(56.dp)
-            .clip(RoundedCornerShape(20.dp))
-            .border(width = 2.dp, color = colors.primary, shape = RoundedCornerShape(20.dp)),
-        contentAlignment = Alignment.Center,
-    ) {
-        OwnTVIcon(icon = OwnTVIcon.PLAY, tint = colors.primary, modifier = Modifier.size(26.dp), filled = true)
-    }
+    Image(
+        painter = painterResource(R.drawable.deodato_brand_mark),
+        contentDescription = null,
+        modifier = modifier.size(56.dp),
+    )
 }
 
 @Composable

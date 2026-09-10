@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+    <!-- App-local branding overlay. Technical resource names stay compatible with OwnTV_Core. -->
+    <string name="common_own_tv_user">DeodatoTV ব্যবহারকারী</string>
+    <string name="companion_add_page_title">DeodatoTV — উৎস যোগ করুন</string>
+    <string name="companion_backup_description">একটি DeodatoTV ব্যাকআপ ফাইল (.own, অথবা পুরোনো .json) বেছে নিয়ে পাঠান চাপুন। এটি TV-তে পাঠানো হবে — রিমোট হাতে নিয়ে সেখানে কী পুনরুদ্ধার করবেন তা বেছে নিন।</string>
+    <string name="companion_backup_page_title">DeodatoTV — ব্যাকআপ পুনরুদ্ধার করুন</string>
+    <string name="companion_download_description">আপনার টিভি একটি DeodatoTV ব্যাকআপ ফাইল প্রস্তুত করেছে। এই ডিভাইসে এটি সংরক্ষণ করতে বোতামটি ট্যাপ করুন (owntv-backup.own)। এটি নিরাপদ কোনো জায়গায় রাখুন — পরে এটি থেকে পুনরুদ্ধার করতে পারবেন।</string>
+    <string name="companion_download_page_title">DeodatoTV — ব্যাকআপ ডাউনলোড করুন</string>
+    <string name="companion_image_page_title">DeodatoTV — পটভূমির ছবি</string>
+    <string name="companion_pin_page_title">DeodatoTV — PIN লিখুন</string>
+    <string name="companion_saved_page_title">DeodatoTV — পাঠানো হয়েছে</string>
+    <string name="content_epg_own_player">DeodatoTV প্লেয়ার</string>
+    <string name="content_exit_owntv">DeodatoTV থেকে বের হবেন?</string>
+    <string name="local_sync_browser_body">এই ঠিকানাটি আপনার অন্য ডিভাইসের DeodatoTV অ্যাপের জন্য। সেখানে লোকাল সিঙ্ক খুলে তালিকা থেকে এই ডিভাইসটি বেছে নিন।</string>
+    <string name="local_sync_browser_title">DeodatoTV লোকাল সিঙ্ক</string>
+    <string name="local_sync_error_unreachable">এই ডিভাইসে পৌঁছানো যায়নি। সেটিতে DeodatoTV → সেটিংস → ডেটা → লোকাল সিঙ্ক খুলে সিঙ্ক মোড চালু করুন। দুটি ডিভাইসই একই ওয়াই-ফাইতে থাকতে হবে।</string>
+    <string name="recovery_title">DeodatoTV এর ডেটাবেস খুলতে পারেনি</string>
+    <string name="settings_about_license">DeodatoTV · © 2026 OwnTV · GPLv3 লাইসেন্স</string>
+    <string name="settings_app_startup_description">DeodatoTV চালু হলে কী খুলবে</string>
+    <string name="settings_auto_frame_rate_warning_description">এই ডিভাইসে Android <xliff:g id="android_version">%1$s</xliff:g> চলছে। Android 12-এর নিচে টিভি DeodatoTV-কে জানাতে পারে না কোন রিফ্রেশ রেটগুলোতে এটি মসৃণভাবে সুইচ করতে পারে, তাই রেট পরিবর্তন করলে স্ক্রিন এক বা দুই সেকেন্ডের জন্য কালো হয়ে যেতে পারে — কখনও কখনও একটি অনুষ্ঠানের সময় একাধিকবারও।\n\nআমরা এখানে অটো ফ্রেম রেট বন্ধ রাখার পরামর্শ দিই। আপনার টিভি যদি নির্বিঘ্নে সুইচ করে, তবে এটি চালু করে দেখুন: আপনি যেকোনো সময় আবার বন্ধ করে দিতে পারবেন।</string>
+    <string name="settings_catchup_player_internal">DeodatoTV প্লেয়ার</string>
+    <string name="settings_dns_toggle_description">DeodatoTV-এর সব ডোমেইন লুকআপ একটি কাস্টম DNS সার্ভারের মাধ্যমে রিজলভ করুন।</string>
+    <string name="settings_language_contribution_description">QR কোড স্ক্যান করুন বা লিঙ্কটি খুলে যেকোনো উপলব্ধ ভাষা বেছে নিন এবং DeodatoTV-এর সব ছয়টি অনুবাদ কম্পোনেন্ট জুড়ে অবদান রাখুন।</string>
+    <string name="settings_language_contribution_qr_description">DeodatoTV অনুবাদ প্রকল্পের ওভারভিউর QR কোড</string>
+    <string name="settings_language_help_translate">DeodatoTV-কে আপনার ভাষায় অনুবাদ করতে সাহায্য করুন</string>
+    <string name="settings_live_tune_timeout_description">এই সময়ের মধ্যে কোনও লাইভ চ্যানেলে ছবি না এলে DeodatoTV চেষ্টা থামিয়ে আপনাকে জানাবে, তার সব প্লেয়ার একে একে চেষ্টা করতে করতে কালো পর্দা দেখিয়ে যাওয়ার বদলে। “কখনও নয়” বেছে নিলে চেষ্টা চলতেই থাকে, আর আপনার প্রদানকারী সরিয়ে ফেলা চ্যানেলে সেটি এক মিনিটেরও বেশি সময় নিতে পারে। প্রদানকারী নিজে যে অপেক্ষা চায়, তা এই সময়ে ধরা হয় না।</string>
+    <string name="settings_metadata_clear_advanced_message">আপনার TMDB API কী এবং আপনার সার্ভারের ঠিকানা এই ডিভাইস থেকে মুছে ফেলা হবে, এবং DeodatoTV দৈনিক ভাগসহ অন্তর্নির্মিত শেয়ার্ড পরিষেবায় ফিরে যাবে।</string>
+    <string name="settings_metadata_fair_share">অন্তর্নির্মিত মেটাডেটা পরিষেবাটি DeodatoTV ব্যবহারকারী সবাই ভাগ করে নেন, তাই প্রতিটি ডিভাইস প্রতিদিন নিজের ভাগ পায়। ভাগ শেষ হয়ে গেলে পোস্টার ও বিবরণ আবার ভরা পর্যন্ত থেমে থাকে — আপনার নিজের প্লেলিস্টের তথ্য স্বাভাবিকভাবেই চলতে থাকে। নিজের TMDB API কী বা সার্ভার যোগ করলে এই সীমা উঠে যায়: এটি বিনামূল্যে, আর ব্যক্তিগত কী-তে কার্যত কোনো সীমা নেই।</string>
+    <string name="settings_metadata_shared_worker_description">DeodatoTV Worker · সেটআপ ছাড়াই</string>
+    <string name="settings_open_subtitles_access_priority">DeodatoTV-এর শেয়ার করা Worker ব্যবহার করতে দুটিই ফাঁকা রাখুন। কাস্টম Worker URL সরাসরি API কী-এর চেয়ে অগ্রাধিকার পায়। অ্যাকাউন্ট সেশন প্রতিটি প্রোফাইলের জন্য আলাদা থাকে।</string>
+    <string name="settings_proxy_description">DeodatoTV-এর সব ট্রাফিক ও প্লেব্যাক একটি HTTP প্রক্সির মাধ্যমে পাঠান।</string>
+    <string name="settings_restore_remote_description">একই Wi-Fi-এ থাকা ফোন, ট্যাবলেট বা কম্পিউটারে QR স্ক্যান করুন (অথবা URL খুলুন), এই PIN লিখুন, আপনার DeodatoTV ব্যাকআপ ফাইল বেছে নিয়ে Send to TV-তে ট্যাপ করুন। এরপর এখানে কী পুনরুদ্ধার করবেন তা বেছে নিন।</string>
+    <string name="settings_surround_forced_description">সারাউন্ড — Dolby/DTS একটি সত্যিকারের 5.1/7.1 রিসিভারে পাঠায়। যদি শব্দ নিঃশব্দ হয়ে যায় বা ঝিমিয়ে পড়ে, DeodatoTV তবুও স্টেরিওতে ফিরে আসে এবং আপনাকে জানায়।</string>
+    <string name="setup_byo_source_description">DeodatoTV একটি প্লেয়ার — আপনার নিজস্ব Xtream, M3U বা Stalker উৎস যোগ করুন।</string>
+    <string name="setup_disclaimer">DeodatoTV শুধু একটি মিডিয়া প্লেয়ার। এতে কোনো চ্যানেল, প্লেলিস্ট বা কনটেন্ট অন্তর্ভুক্ত নেই। আইনসম্মতভাবে ব্যবহারযোগ্য আপনার নিজস্ব Xtream, M3U বা Stalker উৎস যোগ করার দায়িত্ব আপনার।</string>
+    <string name="setup_set_up_owntv">DeodatoTV সেটআপ করুন</string>
+    <string name="update_ready">DeodatoTV v<xliff:g id="available">%1$s</xliff:g> প্রস্তুত (আপনার কাছে v<xliff:g id="current">%2$s</xliff:g> আছে)।</string>
+</resources>

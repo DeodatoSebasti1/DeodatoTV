@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+    <!-- App-local branding overlay. Technical resource names stay compatible with OwnTV_Core. -->
+    <string name="common_own_tv_user">Utilisateur DeodatoTV</string>
+    <string name="companion_add_page_title">DeodatoTV — Ajouter une source</string>
+    <string name="companion_backup_description">Choisissez un fichier de sauvegarde DeodatoTV (.own ou un ancien fichier .json) et appuyez sur Envoyer. Il est transféré vers la TV — prenez la télécommande et choisissez-y les éléments à restaurer.</string>
+    <string name="companion_backup_page_title">DeodatoTV — Restaurer une sauvegarde</string>
+    <string name="companion_download_description">Votre téléviseur a préparé un fichier de sauvegarde DeodatoTV. Appuyez sur le bouton pour l’enregistrer sur cet appareil (owntv-backup.own). Conservez-le en lieu sûr — vous pourrez effectuer une restauration à partir de ce fichier ultérieurement.</string>
+    <string name="companion_download_page_title">DeodatoTV — Télécharger la sauvegarde</string>
+    <string name="companion_image_page_title">DeodatoTV — Image d’arrière-plan</string>
+    <string name="companion_pin_page_title">DeodatoTV — Saisir le PIN</string>
+    <string name="companion_saved_page_title">DeodatoTV — Envoyé</string>
+    <string name="content_epg_own_player">Lecteur DeodatoTV</string>
+    <string name="content_exit_owntv">Quitter DeodatoTV ?</string>
+    <string name="local_sync_browser_body">Cette adresse est destinée à l\'application DeodatoTV de votre autre appareil. Ouvrez-y Synchronisation locale et choisissez cet appareil dans la liste.</string>
+    <string name="local_sync_browser_title">Synchronisation locale DeodatoTV</string>
+    <string name="local_sync_error_unreachable">Impossible de joindre cet appareil. Sur celui-ci, ouvrez DeodatoTV → Paramètres → Données → Synchronisation locale et activez le mode synchronisation. Les deux appareils doivent être sur le même Wi-Fi.</string>
+    <string name="recovery_title">DeodatoTV n’a pas pu ouvrir sa base de données</string>
+    <string name="settings_about_license">DeodatoTV · © 2026 OwnTV · Licence GPLv3</string>
+    <string name="settings_app_startup_description">Écran qu’DeodatoTV ouvre au démarrage</string>
+    <string name="settings_auto_frame_rate_warning_description">Cet appareil fonctionne sous Android <xliff:g id="android_version">%1$s</xliff:g>. Avant Android 12, le téléviseur ne peut pas indiquer à DeodatoTV les fréquences de rafraîchissement vers lesquelles il peut basculer en douceur ; changer la fréquence peut donc faire passer l\'écran au noir pendant une seconde ou deux — parfois plus d\'une fois au cours d\'un programme.\n\nNous vous recommandons de laisser la fréquence d\'images automatique désactivée ici. Si votre téléviseur bascule proprement, activez-la et voyez : vous pouvez la désactiver à nouveau à tout moment.</string>
+    <string name="settings_catchup_player_internal">Lecteur DeodatoTV</string>
+    <string name="settings_dns_toggle_description">Résoudre tous les noms de domaine consultés par DeodatoTV au moyen d’un serveur DNS personnalisé.</string>
+    <string name="settings_language_contribution_description">Scannez le code QR ou ouvrez le lien pour choisir n\'importe quelle langue disponible et contribuer dans les six composants de traduction d\'DeodatoTV.</string>
+    <string name="settings_language_contribution_qr_description">Code QR de la vue d\'ensemble du projet de traduction d\'DeodatoTV</string>
+    <string name="settings_language_help_translate">Aidez à traduire DeodatoTV dans votre langue</string>
+    <string name="settings_live_tune_timeout_description">Si une chaîne en direct n\'a affiché aucune image passé ce délai, DeodatoTV arrête d\'essayer et vous le dit, au lieu de laisser un écran noir pendant qu\'il passe en revue tous ses lecteurs. « Jamais » continue d\'essayer, ce qui peut prendre bien plus d\'une minute sur une chaîne que votre fournisseur a supprimée. Les attentes demandées par votre fournisseur ne sont pas comptées.</string>
+    <string name="settings_metadata_clear_advanced_message">Votre clé API TMDB et l’adresse de votre serveur seront supprimées de cet appareil, et DeodatoTV reviendra au service partagé intégré avec sa part quotidienne.</string>
+    <string name="settings_metadata_fair_share">Le service de métadonnées intégré est partagé par tous les utilisateurs de DeodatoTV : chaque appareil dispose donc chaque jour de sa propre part. Si vous épuisez la vôtre, les affiches et les descriptions sont suspendues jusqu’à son renouvellement — les informations de votre propre playlist continuent de fonctionner normalement. Ajouter votre propre clé API TMDB ou votre serveur supprime cette limite : c’est gratuit, et une clé personnelle n’a pratiquement aucune limite.</string>
+    <string name="settings_metadata_shared_worker_description">DeodatoTV Worker · aucune configuration</string>
+    <string name="settings_open_subtitles_access_priority">Laissez les deux champs vides pour utiliser le Worker partagé de DeodatoTV. Une URL de Worker personnalisée est prioritaire sur une clé d’API directe. Les sessions de compte restent propres à chaque profil.</string>
+    <string name="settings_proxy_description">Faire transiter tout le trafic et toute la lecture de DeodatoTV par un proxy HTTP.</string>
+    <string name="settings_restore_remote_description">Sur un téléphone, une tablette ou un ordinateur connecté au même Wi-Fi, scannez le code QR (ou ouvrez l’URL), saisissez ce PIN, choisissez votre fichier de sauvegarde DeodatoTV, puis appuyez sur Envoyer au téléviseur. Vous pourrez ensuite choisir ici les éléments à restaurer.</string>
+    <string name="settings_surround_forced_description">Surround — envoyer le Dolby/DTS vers un véritable récepteur 5.1/7.1. Si le son coupe ou saccade, DeodatoTV revient quand même à la stéréo et vous le signale.</string>
+    <string name="setup_byo_source_description">DeodatoTV est un lecteur — ajoutez votre propre source Xtream, M3U ou Stalker.</string>
+    <string name="setup_disclaimer">DeodatoTV n’est qu’un lecteur multimédia. Il ne comprend aucune chaîne, liste de lecture ni aucun contenu. Vous devez ajouter vos propres sources Xtream, M3U ou Stalker auxquelles vous accédez légalement.</string>
+    <string name="setup_set_up_owntv">Configurer DeodatoTV</string>
+    <string name="update_ready">DeodatoTV v<xliff:g id="available">%1$s</xliff:g> est prêt (vous utilisez la v<xliff:g id="current">%2$s</xliff:g>).</string>
+</resources>

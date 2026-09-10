@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+    <!-- App-local branding overlay. Technical resource names stay compatible with OwnTV_Core. -->
+    <string name="common_own_tv_user">DeodatoTV ユーザー</string>
+    <string name="companion_add_page_title">DeodatoTV — ソースを追加</string>
+    <string name="companion_backup_description">DeodatoTVのバックアップファイル（.ownまたは旧形式の.json）を選択し、［送信］を押してください。TVに転送されたら、リモコンを手に取り、TV側で復元する項目を選択してください。</string>
+    <string name="companion_backup_page_title">DeodatoTV — バックアップを復元</string>
+    <string name="companion_download_description">テレビでDeodatoTVのバックアップファイルを準備しました。ボタンをタップして、このデバイスに保存してください（owntv-backup.own）。後で復元できるよう、安全な場所に保管してください。</string>
+    <string name="companion_download_page_title">DeodatoTV — バックアップをダウンロード</string>
+    <string name="companion_image_page_title">DeodatoTV — 背景画像</string>
+    <string name="companion_pin_page_title">DeodatoTV — PINを入力</string>
+    <string name="companion_saved_page_title">DeodatoTV — 送信完了</string>
+    <string name="content_epg_own_player">DeodatoTVプレーヤー</string>
+    <string name="content_exit_owntv">DeodatoTVを終了しますか？</string>
+    <string name="local_sync_browser_body">このアドレスは、もう一方の端末の DeodatoTV アプリ用です。そちらでローカル同期を開き、一覧からこの端末を選んでください。</string>
+    <string name="local_sync_browser_title">DeodatoTV ローカル同期</string>
+    <string name="local_sync_error_unreachable">その端末に接続できませんでした。その端末で DeodatoTV → 設定 → データ → ローカル同期 を開き、同期モードをオンにしてください。両方が同じ Wi-Fi に接続している必要があります。</string>
+    <string name="recovery_title">DeodatoTVはデータベースを開けませんでした</string>
+    <string name="settings_about_license">DeodatoTV · © 2026 OwnTV · GPLv3ライセンス</string>
+    <string name="settings_app_startup_description">DeodatoTVの起動時に開く画面</string>
+    <string name="settings_auto_frame_rate_warning_description">このデバイスはAndroid <xliff:g id="android_version">%1$s</xliff:g>で動作しています。Android 12未満では、テレビがDeodatoTVにスムーズに切り替え可能なリフレッシュレートを伝えられないため、レートを変更すると1〜2秒間画面が暗転する可能性があります。番組中に複数回発生することもあります。\n\nここではオートフレームレートをオフにしておくことをお勧めします。テレビが問題なく切り替えられる場合は、オンにして試してみてください。いつでも元に戻せます。</string>
+    <string name="settings_catchup_player_internal">DeodatoTVプレーヤー</string>
+    <string name="settings_dns_toggle_description">DeodatoTVのすべてのドメイン名をカスタムDNSサーバー経由で名前解決します。</string>
+    <string name="settings_language_contribution_description">QRコードをスキャンするかリンクを開いて、利用可能な任意の言語を選択し、DeodatoTVの6つの翻訳コンポーネントすべてに貢献できます。</string>
+    <string name="settings_language_contribution_qr_description">DeodatoTVの翻訳プロジェクト概要のQRコード</string>
+    <string name="settings_language_help_translate">DeodatoTVの翻訳に協力する</string>
+    <string name="settings_live_tune_timeout_description">この時間までにライブチャンネルの映像が出ない場合、DeodatoTV はすべてのプレーヤーを順に試して黒い画面を映し続ける代わりに、試行をやめてお知らせします。「しない」を選ぶと試行を続けるため、プロバイダーが削除したチャンネルでは 1 分をゆうに超えることがあります。プロバイダー側から求められた待ち時間は含みません。</string>
+    <string name="settings_metadata_clear_advanced_message">TMDB APIキーと独自サーバーのアドレスがこの端末から削除され、DeodatoTVは1日の利用枠がある内蔵の共有サービスに戻ります。</string>
+    <string name="settings_metadata_fair_share">内蔵のメタデータサービスはDeodatoTVを使うすべてのユーザーで共有しているため、各デバイスには1日ごとの利用枠があります。枠を使い切ると、ポスターと説明は回復するまで一時停止します。お使いのプレイリスト自身の情報はこれまでどおり表示されます。独自のTMDB APIキーまたはサーバーを追加すると、この制限はなくなります。無料で、個人キーには実質的に制限がありません。</string>
+    <string name="settings_metadata_shared_worker_description">DeodatoTV Worker · 設定不要</string>
+    <string name="settings_open_subtitles_access_priority">どちらも空欄にするとDeodatoTVの共有Workerを使います。独自のWorker URLは直接指定したAPIキーより優先されます。アカウントのセッションはプロファイルごとに保持されます。</string>
+    <string name="settings_proxy_description">DeodatoTVのすべての通信と再生をHTTPプロキシ経由で行います。</string>
+    <string name="settings_restore_remote_description">同じWi-Fi上のスマートフォン、タブレット、パソコンでQRコードをスキャンするかURLを開き、このPINを入力してDeodatoTVのバックアップファイルを選び、「テレビに送信」をタップします。その後、ここで復元する項目を選択します。</string>
+    <string name="settings_surround_forced_description">サラウンド — Dolby/DTSを実際の5.1/7.1レシーバーに送信します。無音になったりカクついたりする場合は、DeodatoTVはステレオに切り替えてその旨通知します。</string>
+    <string name="setup_byo_source_description">DeodatoTVはプレーヤーです。ご自身のXtream、M3U、またはStalkerソースを追加してください。</string>
+    <string name="setup_disclaimer">DeodatoTVはメディアプレーヤーにすぎません。チャンネル、プレイリスト、コンテンツは一切含まれていません。合法的にアクセスできるご自身のXtream、M3U、またはStalkerソースを追加する責任はユーザーにあります。</string>
+    <string name="setup_set_up_owntv">DeodatoTVをセットアップ</string>
+    <string name="update_ready">DeodatoTV v<xliff:g id="available">%1$s</xliff:g>のインストール準備ができました（現在のバージョン：v<xliff:g id="current">%2$s</xliff:g>）。</string>
+</resources>

@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+    <!-- App-local branding overlay. Technical resource names stay compatible with OwnTV_Core. -->
+    <string name="common_own_tv_user">DeodatoTV-felhasználó</string>
+    <string name="companion_add_page_title">DeodatoTV — Forrás hozzáadása</string>
+    <string name="companion_backup_description">Válassz egy DeodatoTV-mentésfájlt (.own, vagy egy régebbi .json fájlt), és nyomd meg a Küldés gombot. Átkerül a TV-re — vedd kézbe a távirányítót, és ott válaszd ki, mit állítson vissza.</string>
+    <string name="companion_backup_page_title">DeodatoTV — Mentés visszaállítása</string>
+    <string name="companion_download_description">A TV-d elkészített egy DeodatoTV-mentésfájlt. Koppints a gombra, hogy elmentsd erre az eszközre (owntv-backup.own). Tartsd biztonságos helyen — később visszaállíthatod belőle az adataidat.</string>
+    <string name="companion_download_page_title">DeodatoTV — Mentés letöltése</string>
+    <string name="companion_image_page_title">DeodatoTV — Háttérkép</string>
+    <string name="companion_pin_page_title">DeodatoTV — PIN-kód megadása</string>
+    <string name="companion_saved_page_title">DeodatoTV — Elküldve</string>
+    <string name="content_epg_own_player">DeodatoTV-lejátszó</string>
+    <string name="content_exit_owntv">Kilépsz a DeodatoTV-ből?</string>
+    <string name="local_sync_browser_body">Ez a cím a másik eszközén futó DeodatoTV alkalmazásnak szól. Nyissa meg ott a Helyi szinkronizálást, és válassza ki ezt az eszközt a listából.</string>
+    <string name="local_sync_browser_title">DeodatoTV helyi szinkronizálás</string>
+    <string name="local_sync_error_unreachable">Ez az eszköz nem érhető el. Nyissa meg rajta a DeodatoTV → Beállítások → Adatok → Helyi szinkronizálás menüpontot, és kapcsolja be a Szinkronizálási módot. Mindkét eszköznek ugyanazon a Wi-Fi-n kell lennie.</string>
+    <string name="recovery_title">A DeodatoTV nem tudta megnyitni az adatbázisát</string>
+    <string name="settings_about_license">DeodatoTV · © 2026 OwnTV · GPLv3 licenc</string>
+    <string name="settings_app_startup_description">Mit nyit meg a DeodatoTV induláskor</string>
+    <string name="settings_auto_frame_rate_warning_description">Ezen az eszközön Android <xliff:g id="android_version">%1$s</xliff:g> fut. Android 12 alatt a TV nem tudja megmondani a DeodatoTV-nek, mely frissítési frekvenciákra tud zökkenőmentesen váltani, ezért a frekvenciaváltás egy-két másodpercre elsötétítheti a képet — néha egy műsor alatt többször is.\n\nAzt javasoljuk, hagyd itt kikapcsolva az automatikus képkockasebességet. Ha a TV-d tisztán vált, kapcsold be, és próbáld ki: bármikor visszaállíthatod.</string>
+    <string name="settings_catchup_player_internal">DeodatoTV lejátszó</string>
+    <string name="settings_dns_toggle_description">A DeodatoTV összes domainfeloldása egyéni DNS-kiszolgálón keresztül történjen.</string>
+    <string name="settings_glass_master_description">Áttetsző, mattított felületek használata az egész DeodatoTV-ben.</string>
+    <string name="settings_language_contribution_description">Olvasd be a QR-kódot vagy nyisd meg a hivatkozást, hogy bármelyik elérhető nyelvet válaszd, és mind a hat DeodatoTV-fordítási komponenshez hozzájárulj.</string>
+    <string name="settings_language_contribution_qr_description">QR-kód a DeodatoTV-fordítási projekt áttekintéséhez</string>
+    <string name="settings_language_help_translate">Segíts lefordítani a DeodatoTV-t a nyelvedre</string>
+    <string name="settings_live_tune_timeout_description">Ha egy élő csatorna eddig sem mutatott képet, a DeodatoTV abbahagyja a próbálkozást és szól, ahelyett hogy fekete képernyőt hagyna, miközben végigmegy az összes lejátszóján. A Soha tovább próbálkozik, ami jóval egy percnél is tovább tarthat egy olyan csatornánál, amit a szolgáltatód eltávolított. A szolgáltatód által kért várakozások nem számítanak bele.</string>
+    <string name="settings_metadata_clear_advanced_message">A TMDB API-kulcsod és a saját üzemeltetésű kiszolgálód címe törlődik erről az eszközről, és a DeodatoTV visszatér a beépített közös szolgáltatáshoz és annak napi keretéhez.</string>
+    <string name="settings_metadata_fair_share">A beépített szolgáltatáson mindenki osztozik, aki DeodatoTV-t használ. Ha bármelyik perces, órás vagy napi keret elfogy, a TMDB-részletek szünetelnek, amíg az adott időszak vissza nem áll; a lejátszási lista adatai továbbra is működnek. A saját kulcsod vagy Workered megszünteti ezt a korlátot.</string>
+    <string name="settings_metadata_shared_worker_description">DeodatoTV Worker · nincs teendő</string>
+    <string name="settings_open_subtitles_access_priority">Hagyd mindkettőt üresen a DeodatoTV közös Workeréhez. Az egyéni Worker URL elsőbbséget élvez a közvetlen API-kulccsal szemben. A fiókmenetek profilonként külön maradnak.</string>
+    <string name="settings_proxy_description">A DeodatoTV teljes forgalmát és lejátszását HTTP-proxyn keresztül küldi.</string>
+    <string name="settings_restore_remote_description">Egy telefonon, táblagépen vagy számítógépen ugyanazon a Wi-Fi-n olvasd be a QR-kódot (vagy nyisd meg az URL-t), add meg ezt a PIN-kódot, válaszd ki a DeodatoTV-mentésfájlodat, és koppints a Küldés a TV-re gombra. Utána itt választod ki, mit állítson vissza.</string>
+    <string name="settings_surround_forced_description">Térhangzás — Dolby/DTS küldése valódi 5.1/7.1 erősítőnek. Ha elnémul vagy akadozik, a DeodatoTV akkor is sztereóra vált, és szól róla.</string>
+    <string name="setup_byo_source_description">A DeodatoTV egy lejátszó — hozd a saját Xtream-, M3U- vagy Stalker-forrásodat.</string>
+    <string name="setup_disclaimer">A DeodatoTV kizárólag médialejátszó. Nem tartalmaz csatornákat, lejátszási listákat vagy tartalmat. A saját, legálisan elérhető Xtream-, M3U- vagy Stalker-forrásaid hozzáadása a te felelősséged.</string>
+    <string name="setup_set_up_owntv">A DeodatoTV beállítása</string>
+    <string name="update_ready">A DeodatoTV v<xliff:g id="available">%1$s</xliff:g> készen áll (jelenleg a v<xliff:g id="current">%2$s</xliff:g> fut).</string>
+</resources>

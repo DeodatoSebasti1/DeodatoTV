@@ -1,6 +1,7 @@
 package tv.own.owntv.player
 
 import androidx.activity.compose.BackHandler
+import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.focusable
 import androidx.compose.foundation.layout.Arrangement
@@ -30,6 +31,8 @@ import androidx.compose.ui.focus.focusRequester
 import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalLayoutDirection
+import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.input.key.Key
 import androidx.compose.ui.input.key.KeyEventType
@@ -217,6 +220,7 @@ fun PlayerHud(
     val zoomMode by player.zoomMode.collectAsStateWithLifecycle()
     val speed by player.speed.collectAsStateWithLifecycle()
     val isLive = player.isLiveContent
+    val showLiveNoSignal = isLive && error != null
     val switchedToExo = stringResource(R.string.player_switch_exo)
     val switchedToMpv = stringResource(R.string.player_switch_mpv)
     val tuneNotFound = stringResource(R.string.player_channel_not_found)
@@ -523,6 +527,15 @@ fun PlayerHud(
             }
         },
     ) {
+        if (showLiveNoSignal) {
+            Image(
+                painter = painterResource(R.drawable.live_no_signal),
+                contentDescription = stringResource(R.string.player_playback_error),
+                contentScale = ContentScale.Crop,
+                modifier = Modifier.fillMaxSize(),
+            )
+        }
+
         if (!controlsVisible && !showNextCard) {
             Box(
                 Modifier.fillMaxSize().focusRequester(catchFocus).focusable()
@@ -532,7 +545,7 @@ fun PlayerHud(
 
         // Stream technical info — drawn over everything (and kept up even when the controls auto-hide), so
         // you can read live bitrate/buffer while watching. Toggled from the bottom bar's info button.
-        if (showInfo) {
+        if (showInfo && !showLiveNoSignal) {
             // Sits clear of the taller unified top strip (logo + guide) rather than under the old title row.
             StreamInfoOverlay(player, modifier = Modifier.align(Alignment.TopEnd).padding(top = 112.dp, end = 20.dp))
         }
@@ -564,7 +577,7 @@ fun PlayerHud(
             }
         }
 
-        if (controlsVisible) {
+        if (controlsVisible && !showLiveNoSignal) {
             // Scrims: a FLAT semi-transparent panel behind the controls, feathered to transparent only at
             // the inner edge. A pure gradient faded out exactly where the chips and the Now/Next text sit,
             // so those washed out on bright scenes; a hard-edged band would instead draw a visible seam
@@ -679,6 +692,14 @@ fun PlayerHud(
 
         // Status overlay (always shown).
         when {
+            showLiveNoSignal -> Box(Modifier.align(Alignment.BottomCenter).padding(bottom = 56.dp)) {
+                OwnTVButton(
+                    stringResource(R.string.common_retry),
+                    onClick = { player.retry() },
+                    icon = OwnTVIcon.PLAY,
+                    modifier = Modifier.focusRequester(retryFocus),
+                )
+            }
             error != null -> Column(Modifier.align(Alignment.Center), horizontalAlignment = Alignment.CenterHorizontally) {
                 Text(stringResource(R.string.player_playback_error), style = MaterialTheme.typography.titleLarge, color = Color.White)
                 Spacer(Modifier.height(8.dp))

@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+    <!-- App-local branding overlay. Technical resource names stay compatible with OwnTV_Core. -->
+    <string name="app_name" translatable="false">DeodatoTV</string>
+    <string name="brand_own" translatable="false">Deodato</string>
+    <string name="brand_tv" translatable="false">TV</string>
+    <string name="common_own_tv_user">DeodatoTV User</string>
+    <string name="companion_add_page_title">DeodatoTV \u2014 Add source</string>
+    <string name="companion_backup_description">Choose a DeodatoTV backup file (.own, or an older .json) and press Send. It is transferred to the TV \u2014 pick up the remote and choose what to restore there.</string>
+    <string name="companion_backup_page_title">DeodatoTV \u2014 Restore backup</string>
+    <string name="companion_download_description">Your TV has prepared a DeodatoTV backup file. Tap the button to save it to this device (owntv-backup.own). Keep it somewhere safe \u2014 you can restore from it later.</string>
+    <string name="companion_download_page_title">DeodatoTV \u2014 Download backup</string>
+    <string name="companion_image_page_title">DeodatoTV \u2014 Background image</string>
+    <string name="companion_pin_page_title">DeodatoTV \u2014 Enter PIN</string>
+    <string name="companion_saved_page_title">DeodatoTV \u2014 Sent</string>
+    <string name="content_epg_own_player">DeodatoTV player</string>
+    <string name="content_exit_owntv">Exit DeodatoTV?</string>
+    <string name="local_sync_browser_body">This address is for the DeodatoTV app on your other device. Open Local sync there and pick this device from the list.</string>
+    <string name="local_sync_browser_title">DeodatoTV local sync</string>
+    <string name="local_sync_error_unreachable">This device could not be reached. On it, open DeodatoTV → Settings → Data → Local sync and turn Sync mode on. Both devices must be on the same Wi-Fi.</string>
+    <string name="recovery_title">DeodatoTV could not open its database</string>
+    <string name="settings_about_license">DeodatoTV · © 2026 OwnTV · GPLv3 License</string>
+    <string name="settings_app_startup_description">What DeodatoTV opens when it starts</string>
+    <string name="settings_auto_frame_rate_warning_description">This device runs Android <xliff:g id="android_version">%1$s</xliff:g>. Below Android 12 the TV can\'t tell DeodatoTV which refresh rates it can switch to smoothly, so changing the rate may black the screen out for a second or two — sometimes more than once during a programme.\n\nWe recommend leaving Auto frame rate off here. If your TV switches cleanly, turn it on and see: you can change it back at any time.</string>
+    <string name="settings_catchup_player_internal">DeodatoTV player</string>
+    <string name="settings_dns_toggle_description">Resolve all DeodatoTV domain lookups through a custom DNS server.</string>
+    <string name="settings_glass_master_description">Use translucent, frosted surfaces throughout DeodatoTV.</string>
+    <string name="settings_language_contribution_description">Scan the QR code or open the link to choose any available language and contribute across all six DeodatoTV translation components.</string>
+    <string name="settings_language_contribution_qr_description">QR code for the DeodatoTV translation project overview</string>
+    <string name="settings_language_help_translate">Help translate DeodatoTV into your language</string>
+    <string name="settings_live_tune_timeout_description">If a live channel has shown no picture by this time, DeodatoTV stops trying and tells you, instead of leaving a black screen while it works through every player it has. Never keeps trying, which can take well over a minute on a channel your provider has removed. Waits your provider asks for are not counted.</string>
+    <string name="settings_metadata_clear_advanced_message">Your TMDB API key and self-hosted server address will be deleted from this device, and DeodatoTV will go back to the built-in shared service with its daily share.</string>
+    <string name="settings_metadata_fair_share">The built-in service is shared by everyone using DeodatoTV. If any minute, hourly or daily allowance is used up, TMDB details pause until that window resets; playlist information keeps working. Your own key or Worker removes this allowance.</string>
+    <string name="settings_metadata_shared_worker_description">DeodatoTV Worker · no setup</string>
+    <string name="settings_open_subtitles_access_priority">Leave both blank for DeodatoTV’s shared Worker. A custom Worker URL takes priority over a direct API key. Account sessions remain profile-specific.</string>
+    <string name="settings_proxy_description">Send all DeodatoTV traffic and playback through an HTTP proxy.</string>
+    <string name="settings_restore_remote_description">On a phone, tablet or computer on the same Wi-Fi, scan the QR (or open the URL), enter this PIN, choose your DeodatoTV backup file and tap Send to TV. You then pick what to restore here.</string>
+    <string name="settings_surround_forced_description">Surround — send Dolby/DTS to a real 5.1/7.1 receiver. If it goes silent or stutters, DeodatoTV still falls back to stereo and tells you.</string>
+    <string name="setup_byo_source_description">DeodatoTV is a player \u2014 bring your own Xtream, M3U, or Stalker source.</string>
+    <string name="setup_disclaimer">DeodatoTV is a media player only. It includes no channels, playlists, or content. You are responsible for adding your own legally accessible Xtream, M3U, or Stalker sources.</string>
+    <string name="setup_set_up_owntv">Set up DeodatoTV</string>
+    <string name="update_ready">DeodatoTV v<xliff:g id="available">%1$s</xliff:g> is ready (you have v<xliff:g id="current">%2$s</xliff:g>).</string>
+</resources>

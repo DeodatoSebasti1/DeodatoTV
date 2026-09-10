@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+    <!-- App-local branding overlay. Technical resource names stay compatible with OwnTV_Core. -->
+    <string name="common_own_tv_user">Uživatel DeodatoTV</string>
+    <string name="companion_add_page_title">DeodatoTV — Přidat zdroj</string>
+    <string name="companion_backup_description">Vyberte soubor zálohy DeodatoTV (.own nebo starší .json) a stiskněte Odeslat. Přenese se do televizoru — vezměte dálkový ovladač a vyberte tam, co chcete obnovit.</string>
+    <string name="companion_backup_page_title">DeodatoTV — Obnovení ze zálohy</string>
+    <string name="companion_download_description">Televizor připravil soubor zálohy DeodatoTV. Klepnutím na tlačítko jej uložte do tohoto zařízení (owntv-backup.own). Uchovávejte jej na bezpečném místě — později z něj můžete provést obnovení.</string>
+    <string name="companion_download_page_title">DeodatoTV — Stáhnout zálohu</string>
+    <string name="companion_image_page_title">DeodatoTV — Obrázek na pozadí</string>
+    <string name="companion_pin_page_title">DeodatoTV — Zadat PIN</string>
+    <string name="companion_saved_page_title">DeodatoTV — Odesláno</string>
+    <string name="content_epg_own_player">Přehrávač DeodatoTV</string>
+    <string name="content_exit_owntv">Ukončit DeodatoTV?</string>
+    <string name="local_sync_browser_body">Tato adresa je určená pro aplikaci DeodatoTV na druhém zařízení. Otevřete tam Místní synchronizaci a vyberte ze seznamu toto zařízení.</string>
+    <string name="local_sync_browser_title">Místní synchronizace DeodatoTV</string>
+    <string name="local_sync_error_unreachable">Toto zařízení se nepodařilo kontaktovat. Otevřete na něm DeodatoTV → Nastavení → Data → Místní synchronizace a zapněte Režim synchronizace. Obě zařízení musí být na stejné Wi-Fi.</string>
+    <string name="recovery_title">DeodatoTV nemohla otevřít svou databázi</string>
+    <string name="settings_about_license">DeodatoTV · © 2026 OwnTV · Licence GPLv3</string>
+    <string name="settings_app_startup_description">Co DeodatoTV otevře při spuštění</string>
+    <string name="settings_auto_frame_rate_warning_description">Toto zařízení běží na Androidu <xliff:g id="android_version">%1$s</xliff:g>. Na Androidu nižším než 12 televizor nedokáže DeodatoTV sdělit, které obnovovací frekvence umí plynule přepínat, takže změna frekvence může na vteřinu nebo dvě zhasnout obrazovku – někdy i vícekrát během jednoho pořadu.\n\nDoporučujeme zde nechat automatickou snímkovou frekvenci vypnutou. Pokud váš televizor přepíná bez problémů, zapněte ji a uvidíte: můžete to kdykoli změnit zpět.</string>
+    <string name="settings_catchup_player_internal">Přehrávač DeodatoTV</string>
+    <string name="settings_dns_toggle_description">Všechna vyhledávání domén DeodatoTV provádět prostřednictvím vlastního serveru DNS.</string>
+    <string name="settings_language_contribution_description">Naskenujte QR kód nebo otevřete odkaz, zvolte libovolný dostupný jazyk a přispějte ve všech šesti překladových komponentách DeodatoTV.</string>
+    <string name="settings_language_contribution_qr_description">QR kód pro přehled překladatelského projektu DeodatoTV</string>
+    <string name="settings_language_help_translate">Pomozte přeložit DeodatoTV do vašeho jazyka</string>
+    <string name="settings_live_tune_timeout_description">Pokud se u živého kanálu do této doby neobjeví obraz, DeodatoTV to vzdá a dá vám vědět, místo aby nechal černou obrazovku, zatímco zkouší všechny své přehrávače. Volba „Nikdy“ zkouší dál, což u kanálu, který váš poskytovatel zrušil, může trvat výrazně přes minutu. Čekání, o které si řekne poskytovatel, se nezapočítává.</string>
+    <string name="settings_metadata_clear_advanced_message">Váš klíč API TMDB a adresa vlastního serveru budou z tohoto zařízení smazány a DeodatoTV se vrátí k vestavěné sdílené službě s jejím denním podílem.</string>
+    <string name="settings_metadata_fair_share">Vestavěnou službu metadat sdílejí všichni uživatelé DeodatoTV, takže každé zařízení dostává každý den vlastní podíl. Pokud svůj podíl vyčerpáte, plakáty a popisy se pozastaví, dokud se podíl neobnoví — informace z vaší vlastní playlistu fungují dál normálně. Přidání vlastního klíče API TMDB nebo serveru toto omezení odstraní: je zdarma a osobní klíč prakticky žádný limit nemá.</string>
+    <string name="settings_metadata_shared_worker_description">DeodatoTV Worker · bez nastavování</string>
+    <string name="settings_open_subtitles_access_priority">Pro společný Worker DeodatoTV nechte obojí prázdné. Vlastní adresa Workeru má přednost před přímým klíčem API. Přihlášení k účtu zůstává specifické pro profil.</string>
+    <string name="settings_proxy_description">Odesílat veškerý provoz DeodatoTV i přehrávání přes HTTP proxy.</string>
+    <string name="settings_restore_remote_description">Na telefonu, tabletu nebo počítači připojeném ke stejné síti Wi-Fi naskenujte QR kód (nebo otevřete adresu URL), zadejte tento PIN, vyberte soubor zálohy DeodatoTV a klepněte na Odeslat do TV. Potom zde vyberete, co chcete obnovit.</string>
+    <string name="settings_surround_forced_description">Prostorový zvuk – posílejte Dolby/DTS do skutečného přijímače 5.1/7.1. Pokud ztichne nebo se zadrhává, DeodatoTV se i tak vrátí ke stereu a dá vám vědět.</string>
+    <string name="setup_byo_source_description">DeodatoTV je přehrávač — přidejte vlastní zdroj Xtream, M3U nebo Stalker.</string>
+    <string name="setup_disclaimer">DeodatoTV je pouze přehrávač médií. Neobsahuje žádné kanály, playlisty ani obsah. Za přidání vlastních legálně dostupných zdrojů Xtream, M3U nebo Stalker odpovídáte vy.</string>
+    <string name="setup_set_up_owntv">Nastavení DeodatoTV</string>
+    <string name="update_ready">DeodatoTV v<xliff:g id="available">%1$s</xliff:g> je připravena (máte v<xliff:g id="current">%2$s</xliff:g>).</string>
+</resources>

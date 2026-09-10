@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+    <!-- App-local branding overlay. Technical resource names stay compatible with OwnTV_Core. -->
+    <string name="common_own_tv_user">DeodatoTV-gebruiker</string>
+    <string name="companion_add_page_title">DeodatoTV — Bron toevoegen</string>
+    <string name="companion_backup_description">Kies een DeodatoTV-back-upbestand (.own of een ouder .json-bestand) en druk op Verzenden. Het wordt naar de tv overgebracht — pak de afstandsbediening en kies daar wat je wilt herstellen.</string>
+    <string name="companion_backup_page_title">DeodatoTV — Back-up herstellen</string>
+    <string name="companion_download_description">Je tv heeft een DeodatoTV-back-upbestand voorbereid. Tik op de knop om het op dit apparaat op te slaan (owntv-backup.own). Bewaar het op een veilige plek — je kunt je gegevens er later mee herstellen.</string>
+    <string name="companion_download_page_title">DeodatoTV — Back-up downloaden</string>
+    <string name="companion_image_page_title">DeodatoTV — Achtergrondafbeelding</string>
+    <string name="companion_pin_page_title">DeodatoTV — PIN invoeren</string>
+    <string name="companion_saved_page_title">DeodatoTV — Verzonden</string>
+    <string name="content_epg_own_player">DeodatoTV-speler</string>
+    <string name="content_exit_owntv">DeodatoTV afsluiten?</string>
+    <string name="local_sync_browser_body">Dit adres is bedoeld voor de DeodatoTV-app op je andere apparaat. Open daar Lokaal synchroniseren en kies dit apparaat uit de lijst.</string>
+    <string name="local_sync_browser_title">DeodatoTV lokaal synchroniseren</string>
+    <string name="local_sync_error_unreachable">Dit apparaat was niet bereikbaar. Open daarop DeodatoTV → Instellingen → Gegevens → Lokaal synchroniseren en zet Synchronisatiemodus aan. Beide apparaten moeten op hetzelfde wifinetwerk zitten.</string>
+    <string name="recovery_title">DeodatoTV kon de database niet openen</string>
+    <string name="settings_about_license">DeodatoTV · © 2026 OwnTV · GPLv3-licentie</string>
+    <string name="settings_app_startup_description">Wat DeodatoTV opent wanneer de app start</string>
+    <string name="settings_auto_frame_rate_warning_description">Dit apparaat draait op Android <xliff:g id="android_version">%1$s</xliff:g>. Onder Android 12 kan de tv DeodatoTV niet vertellen naar welke verversingsfrequenties hij soepel kan overschakelen, dus het wijzigen van de frequentie kan het scherm een seconde of twee zwart maken — soms meerdere keren tijdens een programma.\n\nWe raden aan om Automatische framesnelheid hier uit te laten staan. Als je tv probleemloos overschakelt, zet je hem aan en kijk je: je kunt hem op elk moment weer uitzetten.</string>
+    <string name="settings_catchup_player_internal">DeodatoTV-speler</string>
+    <string name="settings_dns_toggle_description">Alle domeinnamen die DeodatoTV opzoekt via een aangepaste DNS-server laten omzetten.</string>
+    <string name="settings_language_contribution_description">Scan de QR-code of open de link om elke beschikbare taal te kiezen en bij te dragen aan alle zes DeodatoTV-vertaalcomponenten.</string>
+    <string name="settings_language_contribution_qr_description">QR-code voor het overzicht van het DeodatoTV-vertaalproject.</string>
+    <string name="settings_language_help_translate">Help DeodatoTV in jouw taal te vertalen</string>
+    <string name="settings_live_tune_timeout_description">Als een livekanaal binnen deze tijd geen beeld heeft laten zien, stopt DeodatoTV met proberen en laat het je weten, in plaats van een zwart scherm te tonen terwijl het alle spelers een voor een afgaat. ‘Nooit’ blijft proberen, wat op een kanaal dat je provider heeft verwijderd ruim een minuut kan duren. Wachttijden waar je provider zelf om vraagt, tellen niet mee.</string>
+    <string name="settings_metadata_clear_advanced_message">Je TMDB-API-sleutel en het adres van je eigen server worden van dit apparaat verwijderd, en DeodatoTV keert terug naar de ingebouwde gedeelde dienst met het dagelijkse deel.</string>
+    <string name="settings_metadata_fair_share">De ingebouwde metadatadienst wordt gedeeld door iedereen die DeodatoTV gebruikt, dus elk apparaat krijgt elke dag zijn eigen deel. Als je jouw deel opmaakt, pauzeren posters en beschrijvingen tot het weer wordt aangevuld — de informatie uit je eigen afspeellijst blijft gewoon werken. Je eigen TMDB-API-sleutel of server toevoegen heft de limiet op: het is gratis en een persoonlijke sleutel heeft praktisch geen limiet.</string>
+    <string name="settings_metadata_shared_worker_description">DeodatoTV Worker · geen installatie</string>
+    <string name="settings_open_subtitles_access_priority">Laat beide leeg om de gedeelde Worker van DeodatoTV te gebruiken. Een eigen Worker-URL heeft voorrang op een directe API-sleutel. Accountsessies blijven profielspecifiek.</string>
+    <string name="settings_proxy_description">Stuur al het verkeer en afspelen van DeodatoTV via een HTTP-proxy.</string>
+    <string name="settings_restore_remote_description">Scan op een telefoon, tablet of computer die met dezelfde Wi-Fi is verbonden de QR-code (of open de URL), voer deze PIN in, kies uw DeodatoTV-back-upbestand en tik op Naar tv verzenden. Vervolgens kiest u hier wat u wilt herstellen.</string>
+    <string name="settings_surround_forced_description">Surround — stuur Dolby/DTS naar een echte 5.1/7.1-receiver. Als het stil wordt of hapert, valt DeodatoTV alsnog terug op stereo en meldt je dat.</string>
+    <string name="setup_byo_source_description">DeodatoTV is een speler — voeg je eigen Xtream-, M3U- of Stalker-bron toe.</string>
+    <string name="setup_disclaimer">DeodatoTV is uitsluitend een mediaspeler. De app bevat geen zenders, afspeellijsten of content. Je bent zelf verantwoordelijk voor het toevoegen van je eigen legaal toegankelijke Xtream-, M3U- of Stalker-bronnen.</string>
+    <string name="setup_set_up_owntv">DeodatoTV configureren</string>
+    <string name="update_ready">DeodatoTV v<xliff:g id="available">%1$s</xliff:g> staat klaar (je hebt v<xliff:g id="current">%2$s</xliff:g>).</string>
+</resources>

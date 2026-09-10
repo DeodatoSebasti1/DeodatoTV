@@ -1808,6 +1808,17 @@ class LiveViewModel(
         val exoTuneUrl = previewEngine.currentUrl
         val exoDiscoveredHls = _liveOnExo.value && previewEngine.isHlsStream &&
             exoTuneUrl != null && !LiveStreamQuirks.isExplicitHlsUrl(exoTuneUrl)
+        // Capture BEFORE changing _liveOnExo: that state swap unmounts ExoPlayer's SurfaceView. The mpv
+        // surface already knows how to draw this shared freeze frame and clears it on its first frame.
+        val handingOffExo = _liveOnExo.value
+        val handoffFrame = if (handingOffExo) previewEngine.captureCurrentFrame() else null
+        // PixelCopy is asynchronous. A zap during its short wait gives the new tune ownership; never
+        // let the old handoff stop that new channel or put its frame over the new picture.
+        if (handingOffExo && (!_liveOnExo.value || _previewChannel.value?.streamUrl != channel.streamUrl)) {
+            handoffFrame?.takeUnless { it.isRecycled }?.recycle()
+            return
+        }
+        player.holdLiveHandoffFrame(handoffFrame)
         exoOutcomeJob?.cancel()             // mpv owns the channel now
         _liveOnExo.value = false            // shell flips to mpv's surface
         stalkerPreviewCmd = null

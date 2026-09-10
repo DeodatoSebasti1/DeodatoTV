@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+    <!-- App-local branding overlay. Technical resource names stay compatible with OwnTV_Core. -->
+    <string name="common_own_tv_user">Utente DeodatoTV</string>
+    <string name="companion_add_page_title">DeodatoTV — Aggiungi fonte</string>
+    <string name="companion_backup_description">Scegli un file di backup di DeodatoTV (.own oppure un precedente .json) e premi Invia. Verrà trasferito alla TV: prendi il telecomando e scegli lì cosa ripristinare.</string>
+    <string name="companion_backup_page_title">DeodatoTV — Ripristina backup</string>
+    <string name="companion_download_description">La TV ha preparato un file di backup di DeodatoTV. Tocca il pulsante per salvarlo su questo dispositivo (owntv-backup.own). Conservalo in un luogo sicuro: potrai ripristinarlo in seguito.</string>
+    <string name="companion_download_page_title">DeodatoTV — Scarica backup</string>
+    <string name="companion_image_page_title">DeodatoTV — Immagine di sfondo</string>
+    <string name="companion_pin_page_title">DeodatoTV — Inserisci PIN</string>
+    <string name="companion_saved_page_title">DeodatoTV — Inviato</string>
+    <string name="content_epg_own_player">Player DeodatoTV</string>
+    <string name="content_exit_owntv">Uscire da DeodatoTV?</string>
+    <string name="local_sync_browser_body">Questo indirizzo è per l\'app DeodatoTV sull\'altro dispositivo. Apri lì Sincronizzazione locale e scegli questo dispositivo dall\'elenco.</string>
+    <string name="local_sync_browser_title">Sincronizzazione locale DeodatoTV</string>
+    <string name="local_sync_error_unreachable">Impossibile raggiungere questo dispositivo. Su di esso apri DeodatoTV → Impostazioni → Dati → Sincronizzazione locale e attiva la Modalità sincronizzazione. Entrambi devono essere sulla stessa rete Wi-Fi.</string>
+    <string name="recovery_title">DeodatoTV non ha potuto aprire il proprio database</string>
+    <string name="settings_about_license">DeodatoTV · © 2026 OwnTV · Licenza GPLv3</string>
+    <string name="settings_app_startup_description">Cosa apre DeodatoTV all\'avvio</string>
+    <string name="settings_auto_frame_rate_warning_description">Questo dispositivo esegue Android <xliff:g id="android_version">%1$s</xliff:g>. Sotto Android 12 il TV non può comunicare a DeodatoTV a quali frequenze di aggiornamento può passare senza problemi, quindi cambiare la frequenza potrebbe far andare in nero lo schermo per un secondo o due — a volte più di una volta durante un programma.\n\nTi consigliamo di lasciare disattivata qui la frequenza di aggiornamento automatica. Se il tuo TV cambia frequenza senza intoppi, attivala e prova: puoi disattivarla di nuovo in qualsiasi momento.</string>
+    <string name="settings_catchup_player_internal">Player di DeodatoTV</string>
+    <string name="settings_dns_toggle_description">Risolvi tutte le ricerche dei domini di DeodatoTV tramite un server DNS personalizzato.</string>
+    <string name="settings_language_contribution_description">Scansiona il codice QR oppure apri il link per scegliere una qualsiasi lingua disponibile e contribuire a tutti e sei i componenti di traduzione di DeodatoTV.</string>
+    <string name="settings_language_contribution_qr_description">Codice QR della panoramica del progetto di traduzione di DeodatoTV</string>
+    <string name="settings_language_help_translate">Aiutaci a tradurre DeodatoTV nella tua lingua</string>
+    <string name="settings_live_tune_timeout_description">Se entro questo tempo un canale in diretta non ha mostrato immagini, DeodatoTV smette di provare e te lo dice, invece di lasciare uno schermo nero mentre passa in rassegna tutti i suoi lettori. «Mai» continua a provare, cosa che su un canale rimosso dal tuo provider può richiedere ben oltre un minuto. Le attese richieste dal provider non vengono conteggiate.</string>
+    <string name="settings_metadata_clear_advanced_message">La tua chiave API TMDB e l’indirizzo del tuo server verranno eliminati da questo dispositivo e DeodatoTV tornerà al servizio condiviso integrato con la sua quota giornaliera.</string>
+    <string name="settings_metadata_fair_share">Il servizio di metadati integrato è condiviso da tutti gli utenti di DeodatoTV, quindi ogni dispositivo riceve ogni giorno la propria quota. Se esaurisci la tua quota, locandine e descrizioni si interrompono finché non viene rinnovata: le informazioni della tua playlist continuano a funzionare normalmente. Aggiungere una tua chiave API TMDB o un tuo server elimina il limite: è gratuito e una chiave personale non ha praticamente alcun limite.</string>
+    <string name="settings_metadata_shared_worker_description">DeodatoTV Worker · nessuna configurazione</string>
+    <string name="settings_open_subtitles_access_priority">Lascia entrambi i campi vuoti per usare il Worker condiviso di DeodatoTV. Un URL Worker personalizzato ha priorità su una chiave API diretta. Le sessioni dell’account restano specifiche per profilo.</string>
+    <string name="settings_proxy_description">Instrada tutto il traffico e la riproduzione di DeodatoTV attraverso un proxy HTTP.</string>
+    <string name="settings_restore_remote_description">Da un telefono, un tablet o un computer connesso alla stessa rete Wi-Fi, scansiona il codice QR (oppure apri l\'URL), inserisci questo PIN, scegli il file di backup di DeodatoTV e tocca Invia alla TV. Qui potrai quindi scegliere cosa ripristinare.</string>
+    <string name="settings_surround_forced_description">Surround — invia Dolby/DTS a un vero ricevitore 5.1/7.1. Se l\'audio va in muto o ha degli intoppi, DeodatoTV torna comunque allo stereo e te lo segnala.</string>
+    <string name="setup_byo_source_description">DeodatoTV è un player: aggiungi la tua fonte Xtream, M3U o Stalker.</string>
+    <string name="setup_disclaimer">DeodatoTV è solo un player multimediale. Non include canali, playlist né contenuti. Sei responsabile dell\'aggiunta delle tue fonti Xtream, M3U o Stalker accessibili legalmente.</string>
+    <string name="setup_set_up_owntv">Configura DeodatoTV</string>
+    <string name="update_ready">DeodatoTV v<xliff:g id="available">%1$s</xliff:g> è pronto (hai la v<xliff:g id="current">%2$s</xliff:g>).</string>
+</resources>
