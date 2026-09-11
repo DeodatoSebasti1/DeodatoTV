@@ -320,8 +320,8 @@ fun HomeScreen(
             .onFocusChanged { if (it.hasFocus) onChildFocused() }
             .focusGroup(),
         state = listState,
-        contentPadding = PaddingValues(vertical = Dimens.ScreenPaddingV),
-        verticalArrangement = Arrangement.spacedBy(Dimens.GapLarge),
+        contentPadding = PaddingValues(vertical = Dimens.ScreenPaddingV + 2.dp),
+        verticalArrangement = Arrangement.spacedBy(Dimens.GapLarge + 2.dp),
     ) {
         itemsIndexed(renderRows, key = { _, row -> row.name }) { index, row ->
             val firstItemFocusRequester = rowFocusRequester(row)

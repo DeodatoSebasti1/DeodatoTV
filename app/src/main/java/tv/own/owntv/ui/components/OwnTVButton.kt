@@ -54,16 +54,16 @@ fun OwnTVButton(
         enabled = enabled,
         selected = selected,
         shape = shape,
-        focusedScale = 1.012f,
+        focusedScale = 1.014f,
         // M3 tonal: PRIMARY keeps the primary fill; SECONDARY is a tonal surface that lifts to the
         // primary container on focus.
         unfocusedContainerColor = if (primary) colors.primary else colors.card,
         focusedContainerColor = if (primary) colors.primary else colors.primaryContainer,
         selectedContainerColor = if (primary || selected) colors.primary else colors.card,
         surface = surface,
-        glassFrostScale = 0.9f,
+        glassFrostScale = 0.95f,
         // Always-on glass edge so the pill reads as glass even when unfocused.
-        glassIdleRimAlpha = 0.18f,
+        glassIdleRimAlpha = 0.22f,
     ) { focused ->
         val contentColor = when {
             primary || (selected && !focused) -> colors.onPrimary
@@ -73,8 +73,8 @@ fun OwnTVButton(
 
         Row(
             modifier = Modifier.padding(
-                horizontal = if (compact) 13.dp else 22.dp,
-                vertical = if (compact) 6.dp else 12.dp,
+                horizontal = if (compact) 14.dp else 24.dp,
+                vertical = if (compact) 7.dp else 12.dp,
             ),
             verticalAlignment = Alignment.CenterVertically,
             horizontalArrangement = Arrangement.spacedBy(if (compact) 6.dp else 10.dp),

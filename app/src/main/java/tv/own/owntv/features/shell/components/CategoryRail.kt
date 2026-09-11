@@ -6,6 +6,7 @@ import androidx.compose.animation.animateColorAsState
 import androidx.compose.animation.core.animateDpAsState
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
+import androidx.compose.foundation.combinedClickable
 import androidx.compose.foundation.focusGroup
 import androidx.compose.foundation.interaction.MutableInteractionSource
 import androidx.compose.foundation.interaction.collectIsFocusedAsState
@@ -22,7 +23,6 @@ import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.layout.wrapContentWidth
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.rememberLazyListState
-import androidx.compose.foundation.selection.selectable
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.runtime.Composable
@@ -41,6 +41,7 @@ import androidx.compose.ui.focus.focusRequester
 import androidx.compose.ui.focus.onFocusChanged
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.semantics.Role
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
@@ -94,6 +95,7 @@ fun CategoryRail(
     categories: List<RailCategory>,
     selectedIndex: Int,
     onSelect: (Int) -> Unit,
+    onLongSelect: ((Int) -> Unit)? = null,
     onFocused: () -> Unit = {},
     modifier: Modifier = Modifier,
     // Caller-supplied list state. Defaulted so existing callers are unchanged, but Live/Movies/Series
@@ -180,7 +182,7 @@ fun CategoryRail(
                 .trapVerticalFocusExit()
                 .focusGroup(),
             contentPadding = if (showPanel) {
-                PaddingValues(vertical = Dimens.GapLarge, horizontal = 10.dp)
+                PaddingValues(vertical = Dimens.GapLarge, horizontal = 12.dp)
             } else {
                 PaddingValues(0.dp)
             },
@@ -211,6 +213,7 @@ fun CategoryRail(
                     selected = index == selectedIndex,
                     expanded = expanded,
                     onClick = { onSelect(index) },
+                    onLongClick = onLongSelect?.let { longSelect -> { longSelect(index) } },
                     modifier = if (index == selectedIndex) Modifier.focusRequester(selectedFocus) else Modifier,
                 )
             }
@@ -234,12 +237,13 @@ private fun RailPill(
     selected: Boolean,
     expanded: Boolean,
     onClick: () -> Unit,
+    onLongClick: (() -> Unit)? = null,
     modifier: Modifier = Modifier,
 ) {
     val interaction = remember { MutableInteractionSource() }
     val focused by interaction.collectIsFocusedAsState()
     // Box-style corners (8.dp), close to the live-TV channel list item, not an over-rounded pill.
-    val shape = if (expanded) RoundedCornerShape(8.dp) else CircleShape
+    val shape = if (expanded) RoundedCornerShape(12.dp) else CircleShape
     // Glass effect: when the PANELS surface is glassy, the focused/active highlight renders as a
     // frosted glass slice (via Modifier.glass) with a bright white rim, matching the sidebar.
     val panelsGlassy = LocalGlass.current.isGlassy(GlassSurface.PANELS)
@@ -271,16 +275,17 @@ private fun RailPill(
                         OwnTVTheme.colors.focusBorder,
                         shape,
                     )
-                    panelsGlassy && highlighted -> Modifier.border(Dimens.FocusBorderWidth, Color.White.copy(alpha = 0.35f), shape)
+                    panelsGlassy && highlighted -> Modifier.border(Dimens.FocusBorderWidth, Color.White.copy(alpha = 0.42f), shape)
                     ladder.focusBorder != null -> Modifier.border(tv.own.owntv.ui.theme.LocalFocusBorderWidth.current, ladder.focusBorder, shape)
                     else -> Modifier
                 }
             )
-            .selectable(
-                selected = selected,
+            .combinedClickable(
                 interactionSource = interaction,
                 indication = null,
+                role = Role.Tab,
                 onClick = onClick,
+                onLongClick = onLongClick,
             ),
     ) {
         // Persistent left accent bar marking the active category (only in the expanded full-label rail —
@@ -304,7 +309,7 @@ private fun RailPill(
                 // Genre hint dot (Sport/News/Movies/Action/…); unknown categories show the grey
                 // "Other" dot rather than an empty slot, so every row has a consistent marker.
                 val genreDot = ChannelGenre.fromCategory(category.fullName).dot
-                Box(Modifier.size(8.dp).clip(CircleShape).background(genreDot))
+                Box(Modifier.size(9.dp).clip(CircleShape).background(genreDot))
                 Spacer(Modifier.width(10.dp))
             }
             if (expanded) {

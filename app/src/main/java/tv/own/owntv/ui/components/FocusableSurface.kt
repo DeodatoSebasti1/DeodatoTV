@@ -56,8 +56,8 @@ fun FocusableSurface(
     focusedContainerColor: Color = OwnTVTheme.colors.card,
     unfocusedContainerColor: Color = Color.Transparent,
     selectedContainerColor: Color = OwnTVTheme.colors.card,
-    focusedScale: Float = 1.012f,
-    glowElevation: Int = 6,
+    focusedScale: Float = 1.014f,
+    glowElevation: Int = 8,
     // When non-null AND that surface is glassy (glass mode on + surface in scope), the focused/
     // selected highlight fill renders as a frosted glass slice (Modifier.glass) with a bright white
     // rim instead of the flat tonal fill + accent border. Idle fills are transparent, which glass()
@@ -128,9 +128,9 @@ fun FocusableSurface(
         // they used before Phase 5; using surfaceContainerLow made both themes look flat and muddy.
         colors.surfaceContainerHigh
     }
-    val solidFocusedContainer = colors.primaryContainer.copy(alpha = 0.22f)
+    val solidFocusedContainer = colors.primaryContainer.copy(alpha = if (colors.isDark) 0.30f else 0.22f)
         .compositeOver(solidTonalBase)
-    val solidSelectedContainer = colors.primaryContainer.copy(alpha = 0.14f)
+    val solidSelectedContainer = colors.primaryContainer.copy(alpha = if (colors.isDark) 0.18f else 0.14f)
         .compositeOver(solidTonalBase)
 
     // Fast D-pad navigation can move focus through several cards before the previous frame reaches
@@ -158,7 +158,7 @@ fun FocusableSurface(
         when {
             (focused || pressed) && glassy && !glassConfig.depthEffects -> 1f
             pressed -> 0.992f
-            compactGlassRow && focused && glassConfig.depthEffects -> 1.008f
+            compactGlassRow && focused && glassConfig.depthEffects -> 1.010f
             focused -> focusedScale
             else -> 1f
         },
@@ -214,7 +214,7 @@ fun FocusableSurface(
                 if (focused && lit && animationsOn) Modifier.shadow(
                     // The bloom IS the animation here: at reduced level it goes and the rim carries
                     // the focus on its own.
-                    elevation = (10 * glowScale).dp,
+                    elevation = (12 * glowScale).dp,
                     shape = shape,
                     clip = false,
                     ambientColor = focusLight,
@@ -280,7 +280,7 @@ fun FocusableSurface(
                         )
                         val radiance = Brush.radialGradient(
                             colors = listOf(
-                                colors.primary.copy(alpha = if (colors.isDark) 0.09f else 0.055f),
+                                colors.primary.copy(alpha = if (colors.isDark) 0.16f else 0.065f),
                                 Color.Transparent,
                             ),
                             center = androidx.compose.ui.geometry.Offset(

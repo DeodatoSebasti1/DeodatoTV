@@ -55,8 +55,8 @@ fun PosterCard(
         selected = selected,
         shape = RoundedCornerShape(Dimens.PosterCardCorner),
         surface = GlassSurface.CARDS,
-        focusedScale = 1.03f,
-        glowElevation = 8,
+        focusedScale = 1.035f,
+        glowElevation = 10,
         focusedContainerColor = colors.surfaceContainerHigh,
         unfocusedContainerColor = colors.surfaceContainerHigh,
         selectedContainerColor = colors.surfaceContainerHigh,
@@ -86,7 +86,7 @@ fun PosterCard(
                             .align(Alignment.TopStart)
                             .padding(6.dp)
                             .clip(RoundedCornerShape(50))
-                            .background(Color.Black.copy(alpha = 0.55f))
+                            .background(Color.Black.copy(alpha = 0.62f))
                             .padding(horizontal = 8.dp, vertical = 3.dp),
                         verticalAlignment = Alignment.CenterVertically,
                     ) {
@@ -136,7 +136,7 @@ fun PosterCard(
                             .align(Alignment.BottomStart)
                             .fillMaxWidth()
                             .height(Dimens.PosterProgressHeight)
-                            .background(Color.Black.copy(alpha = 0.4f)),
+                            .background(Color.Black.copy(alpha = 0.45f)),
                     ) {
                         Box(
                             modifier = Modifier
@@ -147,11 +147,12 @@ fun PosterCard(
                     }
                 }
             }
-            Spacer(Modifier.height(Dimens.PosterPadding))
+            Spacer(Modifier.height(Dimens.PosterPadding + 1.dp))
             Text(
                 title,
                 style = MaterialTheme.typography.labelLarge,
                 color = if (focused) colors.primary else colors.onSurface,
+                fontWeight = if (focused) FontWeight.Bold else FontWeight.SemiBold,
                 maxLines = 2,
                 minLines = 2,
                 overflow = TextOverflow.Ellipsis,

@@ -58,7 +58,7 @@ val PreviewPanelFill: Color
 @Composable
 fun RoundedPanel(
     modifier: Modifier = Modifier,
-    radius: Dp = 22.dp,
+    radius: Dp = 26.dp,
     fillColor: Color? = null,
     innerPadding: PaddingValues = PaddingValues(0.dp),
     surface: GlassSurface = GlassSurface.PANELS,
@@ -68,7 +68,7 @@ fun RoundedPanel(
     val shape = RoundedCornerShape(radius)
     val glassy = LocalGlass.current.isGlassy(surface)
     val bg = fillColor ?: colors.surfaceContainerLowest
-    val outline = colors.outlineVariant.copy(alpha = 0.66f)
+    val outline = colors.outlineVariant.copy(alpha = if (colors.isDark) 0.72f else 0.66f)
     Box(
         modifier = modifier
             .clip(shape)
@@ -100,7 +100,7 @@ fun RoundedPanel(
  */
 @Composable
 fun Modifier.roundedPanel(
-    radius: Dp = 22.dp,
+    radius: Dp = 26.dp,
     fillColor: Color? = null,
     surface: GlassSurface = GlassSurface.PANELS,
 ): Modifier {
@@ -108,7 +108,7 @@ fun Modifier.roundedPanel(
     val shape = RoundedCornerShape(radius)
     val glassy = LocalGlass.current.isGlassy(surface)
     val bg = fillColor ?: colors.surfaceContainerLowest
-    val outline = colors.outlineVariant.copy(alpha = 0.66f)
+    val outline = colors.outlineVariant.copy(alpha = if (colors.isDark) 0.72f else 0.66f)
     return this
         .clip(shape)
         .glass(
@@ -145,7 +145,7 @@ private fun Modifier.solidPanelMaterial(
     )
     val ambient = Brush.radialGradient(
         colors = listOf(
-            accent.copy(alpha = if (isDark) 0.055f else 0.032f),
+            accent.copy(alpha = if (isDark) 0.12f else 0.04f),
             Color.Transparent,
         ),
         center = Offset(
@@ -157,7 +157,7 @@ private fun Modifier.solidPanelMaterial(
     val depth = Brush.verticalGradient(
         colors = listOf(
             Color.Transparent,
-            Color.Black.copy(alpha = if (isDark) 0.045f else 0.018f),
+            Color.Black.copy(alpha = if (isDark) 0.09f else 0.018f),
         ),
         startY = size.height * 0.58f,
         endY = size.height,

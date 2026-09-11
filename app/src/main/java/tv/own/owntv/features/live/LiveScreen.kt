@@ -63,6 +63,7 @@ import tv.own.owntv.R
 import tv.own.owntv.core.customize.CustomizeKeys
 import tv.own.owntv.core.database.entity.ChannelEntity
 import tv.own.owntv.core.database.entity.ContentOrderEntity
+import tv.own.owntv.core.model.MediaType
 import tv.own.owntv.features.customize.MoveToCategoryDialog
 import tv.own.owntv.features.settings.SettingsViewModel
 import tv.own.owntv.features.settings.data.BrowseColumnGap
@@ -94,6 +95,8 @@ import tv.own.owntv.ui.components.OwnTVSpinner
 import tv.own.owntv.ui.components.SearchBar
 import tv.own.owntv.ui.components.SortChip
 import tv.own.owntv.ui.components.TextInputDialog
+import tv.own.owntv.ui.components.InAppToast
+import tv.own.owntv.ui.components.rememberInAppToast
 import tv.own.owntv.ui.components.formatCount
 import tv.own.owntv.ui.components.ContentPanelFill
 import tv.own.owntv.ui.components.PreviewPanelFill
@@ -228,6 +231,8 @@ fun LiveScreen(
     }
     LaunchedEffect(contentScrolled) { onContentScrolled(contentScrolled) }
     val scope = rememberCoroutineScope()
+    val toast = rememberInAppToast()
+    var m3uCategoryOverride by remember { mutableStateOf<M3uCategoryOverrideInfo?>(null) }
     var channelPaneFocused by remember { mutableStateOf(false) }
     var railPaneFocused by remember { mutableStateOf(false) }
     var renaming by remember { mutableStateOf<ChannelEntity?>(null) }
@@ -387,6 +392,11 @@ fun LiveScreen(
             },
             selectedIndex = selectedIndex,
             onSelect = { idx -> railItems.getOrNull(idx)?.let { vm.select(it.key) } },
+            onLongSelect = { idx ->
+                railItems.getOrNull(idx)?.let { item ->
+                    scope.launch { m3uCategoryOverride = vm.m3uCategoryOverrideInfo(item.key) }
+                }
+            },
             // Focusing a folder stops the in-pane preview — but only when a preview is actually running.
             // When the player is docked (live PiP) or fullscreen, previewEnabled is false and stopPreview
             // would kill that stream (e.g. while navigating left to leave Live), so we skip it.
@@ -681,6 +691,31 @@ fun LiveScreen(
         )
     }
 
+    m3uCategoryOverride?.let { info ->
+        val autoToast = stringResource(R.string.content_m3u_category_auto_restored)
+        val movedLiveToast = stringResource(R.string.content_m3u_category_moved, stringResource(R.string.common_nav_live_tv))
+        val movedMovieToast = stringResource(R.string.content_m3u_category_moved, stringResource(R.string.common_nav_movies))
+        val movedSeriesToast = stringResource(R.string.content_m3u_category_moved, stringResource(R.string.common_nav_series))
+        M3uCategoryOverrideDialog(
+            info = info,
+            onApply = { target ->
+                vm.applyM3uCategoryOverride(info, target)
+                val message = if (target == null) {
+                    autoToast
+                } else {
+                    when (target) {
+                        MediaType.LIVE -> movedLiveToast
+                        MediaType.MOVIE -> movedMovieToast
+                        else -> movedSeriesToast
+                    }
+                }
+                toast.show(message)
+                m3uCategoryOverride = null
+            },
+            onDismiss = { m3uCategoryOverride = null },
+        )
+    }
+
     // Move to… a combined category (issue #87), incl. the "＋ New category…" name prompt.
     val moveTargets by vm.moveTargets.collectAsStateWithLifecycle()
     if (creatingCategory) {
@@ -722,6 +757,7 @@ fun LiveScreen(
             onCancel = vm::cancelMove,
         )
     }
+    InAppToast(toast)
 }
 
 @Composable

@@ -56,9 +56,9 @@ fun rememberNavLadderColors(
 
     val container by animateColorAsState(
         when {
-            activeSelected -> colors.primaryContainer
-            focused -> colors.card
-            selected -> colors.secondaryContainer.copy(alpha = 0.45f)
+            activeSelected -> colors.primaryContainer.copy(alpha = 0.95f)
+            focused -> colors.primaryContainer.copy(alpha = if (colors.isDark) 0.30f else 0.20f)
+            selected -> colors.secondaryContainer.copy(alpha = if (colors.isDark) 0.52f else 0.45f)
             else -> Color.Transparent
         },
         // Both navigation rails can move their rows while focus changes. Their container must switch
@@ -71,10 +71,10 @@ fun rememberNavLadderColors(
         when {
             activeSelected -> colors.onPrimaryContainer
             focused -> colors.onSurface       // bright white = "where the remote is"
-            selected -> colors.accent         // accent cyan = "this is active"
+            selected -> colors.accent         // cyan neon = "this is active"
             else -> colors.onSurfaceVariant
         },
-        animationSpec = ownTvTween(140),
+        animationSpec = ownTvTween(160),
         label = "navLadderFg",
     )
     val icon by animateColorAsState(
@@ -84,7 +84,7 @@ fun rememberNavLadderColors(
             selected -> colors.accent
             else -> colors.onSurfaceVariant
         },
-        animationSpec = ownTvTween(140),
+        animationSpec = ownTvTween(160),
         label = "navLadderIcon",
     )
 
@@ -107,7 +107,7 @@ fun rememberNavLadderColors(
 fun BoxScope.NavAccentBar(visible: Boolean, height: Dp = 22.dp, modifier: Modifier = Modifier) {
     val colors = OwnTVTheme.colors
     val width by animateDpAsState(
-        if (visible) 3.dp else 0.dp,
+        if (visible) 4.dp else 0.dp,
         animationSpec = ownTvTween(160),
         label = "navAccentBar",
     )

@@ -131,17 +131,17 @@ fun Sidebar(
             .width(Dimens.SidebarWidthCollapsed)
             // The top bar owns the complete top strip. The plate starts below it and shares the main
             // content panel's 6 dp bottom inset; the horizontal inset keeps the existing shell gap.
-            .padding(start = 6.dp, top = topInset, end = 6.dp, bottom = 6.dp)
+            .padding(start = 7.dp, top = topInset, end = 7.dp, bottom = 7.dp)
             .roundedPanel(fillColor = RailPanelFill, surface = GlassSurface.SIDEBAR)
             // Keep the plate aligned while lowering the logo slightly inside it.
-            .padding(top = 12.dp, bottom = 12.dp),
+            .padding(top = 14.dp, bottom = 14.dp),
         horizontalAlignment = Alignment.CenterHorizontally,
     ) {
         // Phase 2 — brand mark pinned at the top of the rail. Non-focusable, so D-pad entry into the
         // panel still redirects to the selected nav item below (see onFocusChanged) — it can't trap
         // an "up" press from the first nav item either.
         AppLogo()
-        Spacer(Modifier.height(12.dp))
+        Spacer(Modifier.height(14.dp))
 
         // The one way back into a docked mini player from every screen (§8 tier 1). Sits directly under
         // the brand mark, above the browse block, and only exists while there is something to return to.
@@ -264,8 +264,8 @@ private fun NowPlayingItem(
         Column(horizontalAlignment = Alignment.CenterHorizontally) {
             Box(
                 modifier = Modifier
-                    .width(48.dp)
-                    .height(39.dp)
+                    .width(50.dp)
+                    .height(41.dp)
                     .clip(shape)
                     .glass(surface = GlassSurface.SIDEBAR, baseFill = Color.Transparent, shape = shape)
                     .background(
@@ -314,7 +314,15 @@ private fun AppLogo(modifier: Modifier = Modifier) {
     Image(
         painter = painterResource(R.drawable.deodato_brand_mark),
         contentDescription = null,
-        modifier = modifier.size(56.dp),
+        modifier = modifier
+            .size(60.dp)
+            .shadow(
+                elevation = 12.dp,
+                shape = CircleShape,
+                clip = false,
+                ambientColor = OwnTVTheme.colors.primary.copy(alpha = 0.32f),
+                spotColor = OwnTVTheme.colors.primary.copy(alpha = 0.32f),
+            ),
     )
 }
 
@@ -471,14 +479,14 @@ private fun NavItem(
             NavAccentBar(visible = ladder.showAccentBar, height = 22.dp)
             Box(
                 modifier = Modifier
-                    .width(48.dp)
-                    .height(39.dp)
+                    .width(50.dp)
+                    .height(41.dp)
                     .then(
                         if (active) Modifier.shadow(
-                            elevation = 6.dp,
+                            elevation = 9.dp,
                             shape = shape,
-                            ambientColor = colors.primary.copy(alpha = 0.30f),
-                            spotColor = colors.primary.copy(alpha = 0.30f),
+                            ambientColor = colors.primary.copy(alpha = 0.38f),
+                            spotColor = colors.primary.copy(alpha = 0.38f),
                             clip = false,
                         ) else Modifier
                     )
@@ -489,8 +497,8 @@ private fun NavItem(
                         if (active) Modifier.background(
                             Brush.linearGradient(
                                 listOf(
-                                    colors.primary.copy(alpha = 0.64f),
-                                    colors.primaryContainer.copy(alpha = 0.76f),
+                                    colors.primary.copy(alpha = 0.70f),
+                                    colors.primaryContainer.copy(alpha = 0.82f),
                                 ),
                             ),
                             shape,

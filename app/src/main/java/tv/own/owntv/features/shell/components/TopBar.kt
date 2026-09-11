@@ -56,8 +56,8 @@ import java.util.Date
 
 // Top-bar chips: corner matches the nav buttons (14dp, not full-pill) and a lighter frost than the
 // big panels so the small chrome reads as glass without being heavy.
-private val TopBarChipCorner = 14.dp
-private const val TopBarFrost = 0.45f
+private val TopBarChipCorner = 16.dp
+private const val TopBarFrost = 0.52f
 
 @Composable
 fun TopBar(
@@ -114,7 +114,7 @@ fun TopBar(
             .fillMaxWidth()
             .height(barHeight)
             // The complete top strip follows the mockup's small screen-edge inset.
-            .padding(start = 10.dp, end = 20.dp, top = verticalInset, bottom = verticalInset),
+            .padding(start = 11.dp, end = 22.dp, top = verticalInset, bottom = verticalInset),
         verticalAlignment = Alignment.CenterVertically,
         horizontalArrangement = Arrangement.SpaceBetween,
     ) {
@@ -148,7 +148,7 @@ private fun SectionChip(label: String) {
     val colors = OwnTVTheme.colors
     // Keeps its accent tint (marks the current section) but frosts in glass mode like the other chips.
     val shape = RoundedCornerShape(TopBarChipCorner)
-    Box(Modifier.clip(shape).glass(GlassSurface.TOPBAR, colors.primaryContainer, shape, frostScale = TopBarFrost, condenseChrome = true).padding(horizontal = 14.dp, vertical = 7.dp)) {
+    Box(Modifier.clip(shape).glass(GlassSurface.TOPBAR, colors.primaryContainer.copy(alpha = 0.82f), shape, frostScale = TopBarFrost, condenseChrome = true).padding(horizontal = 15.dp, vertical = 7.dp)) {
         Text(label, style = MaterialTheme.typography.labelLarge, color = colors.onPrimaryContainer, fontWeight = FontWeight.Bold)
     }
 }
@@ -168,11 +168,11 @@ private fun SearchPill(onClick: () -> Unit, visible: Boolean) {
         shape = RoundedCornerShape(TopBarChipCorner),
         surface = GlassSurface.TOPBAR,
         glassFrostScale = TopBarFrost,
-        glassIdleRimAlpha = 0.18f,
+        glassIdleRimAlpha = 0.22f,
         glassCondensesWithContent = true,
         // Neutral when idle; accent fill only when focused (matches the playlist selector).
         focusedContainerColor = colors.primaryContainer,
-        unfocusedContainerColor = colors.surfaceContainer.copy(alpha = 0.6f),
+        unfocusedContainerColor = colors.surfaceContainer.copy(alpha = 0.68f),
         contentAlignment = Alignment.Center,
     ) { focused ->
         val fg = if (focused) colors.onPrimaryContainer else colors.onSurfaceVariant
@@ -206,10 +206,10 @@ private fun ContinueChip(label: String, icon: OwnTVIcon, onClick: () -> Unit, vi
         shape = RoundedCornerShape(TopBarChipCorner),
         surface = GlassSurface.TOPBAR,
         glassFrostScale = TopBarFrost,
-        glassIdleRimAlpha = 0.18f,
+        glassIdleRimAlpha = 0.22f,
         glassCondensesWithContent = true,
         focusedContainerColor = colors.primary,
-        unfocusedContainerColor = colors.primaryContainer.copy(alpha = 0.6f),
+        unfocusedContainerColor = colors.primaryContainer.copy(alpha = 0.66f),
         contentAlignment = Alignment.Center,
     ) { focused ->
         Row(
@@ -246,7 +246,7 @@ private fun ClockChip() {
     // Display-only (non-focusable) and neutral (no accent), matching the weather chip. Frosts in
     // glass mode (TOPBAR surface) so it reads as glass like the focusable chips.
     val shape = RoundedCornerShape(TopBarChipCorner)
-    Box(Modifier.clip(shape).glass(GlassSurface.TOPBAR, colors.surfaceContainer.copy(alpha = 0.6f), shape, frostScale = TopBarFrost, condenseChrome = true).padding(horizontal = 14.dp, vertical = 7.dp)) {
+    Box(Modifier.clip(shape).glass(GlassSurface.TOPBAR, colors.surfaceContainer.copy(alpha = 0.68f), shape, frostScale = TopBarFrost, condenseChrome = true).padding(horizontal = 14.dp, vertical = 7.dp)) {
         Text(formatted, style = MaterialTheme.typography.labelLarge, color = colors.onSurfaceVariant)
     }
 }
@@ -264,7 +264,7 @@ private fun PlaylistChip(
     if (!interactive) {
         // Neutral display-only badge (no always-on accent), frosts in glass mode like the other chips.
         val shape = RoundedCornerShape(TopBarChipCorner)
-        Box(Modifier.clip(shape).glass(GlassSurface.TOPBAR, colors.surfaceContainer.copy(alpha = 0.6f), shape, frostScale = TopBarFrost, condenseChrome = true).padding(horizontal = 14.dp, vertical = 7.dp)) {
+        Box(Modifier.clip(shape).glass(GlassSurface.TOPBAR, colors.surfaceContainer.copy(alpha = 0.68f), shape, frostScale = TopBarFrost, condenseChrome = true).padding(horizontal = 14.dp, vertical = 7.dp)) {
             Text(label, style = MaterialTheme.typography.labelLarge, color = colors.onSurfaceVariant, fontWeight = FontWeight.SemiBold, maxLines = 1, overflow = TextOverflow.Ellipsis)
         }
         return
@@ -283,11 +283,11 @@ private fun PlaylistChip(
         shape = RoundedCornerShape(TopBarChipCorner),
         surface = GlassSurface.TOPBAR,
         glassFrostScale = TopBarFrost,
-        glassIdleRimAlpha = 0.18f,
+        glassIdleRimAlpha = 0.22f,
         glassCondensesWithContent = true,
         // Neutral when idle; accent fill only when focused (no always-on accent).
         focusedContainerColor = colors.primaryContainer,
-        unfocusedContainerColor = colors.surfaceContainer.copy(alpha = 0.6f),
+        unfocusedContainerColor = colors.surfaceContainer.copy(alpha = 0.68f),
         contentAlignment = Alignment.Center,
     ) { focused ->
         val fg = if (focused) colors.onPrimaryContainer else colors.onSurfaceVariant
@@ -322,7 +322,7 @@ private fun WeatherChip(info: WeatherInfo, fahrenheit: Boolean) {
     }
     val location = if (info.city.isNotBlank()) stringResource(R.string.common_weather_city, temp, info.city) else temp
     val shape = RoundedCornerShape(TopBarChipCorner)
-    Box(Modifier.clip(shape).glass(GlassSurface.TOPBAR, colors.surfaceContainer.copy(alpha = 0.6f), shape, frostScale = TopBarFrost, condenseChrome = true).padding(horizontal = 14.dp, vertical = 7.dp)) {
+    Box(Modifier.clip(shape).glass(GlassSurface.TOPBAR, colors.surfaceContainer.copy(alpha = 0.68f), shape, frostScale = TopBarFrost, condenseChrome = true).padding(horizontal = 14.dp, vertical = 7.dp)) {
         Row(verticalAlignment = Alignment.CenterVertically, horizontalArrangement = Arrangement.spacedBy(8.dp)) {
             WeatherConditionIcon(info = info, Modifier.size(16.dp))
             Text(location, style = MaterialTheme.typography.labelLarge, color = colors.onSurfaceVariant, fontWeight = FontWeight.Bold, maxLines = 1, overflow = TextOverflow.Ellipsis)

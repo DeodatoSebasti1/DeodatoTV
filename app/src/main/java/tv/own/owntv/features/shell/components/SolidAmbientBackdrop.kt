@@ -62,8 +62,8 @@ fun SolidAmbientBackdrop(
         drawCircle(
             brush = Brush.radialGradient(
                 colors = listOf(
-                    primary.copy(alpha = 0.14f),
-                    primary.copy(alpha = 0.052f),
+            primary.copy(alpha = 0.16f),
+            primary.copy(alpha = 0.060f),
                     Color.Transparent,
                 ),
                 center = center,
@@ -74,7 +74,7 @@ fun SolidAmbientBackdrop(
         )
         if (pulseEnabled) {
             drawCircle(
-                color = primary.copy(alpha = 0.20f * presence),
+                color = primary.copy(alpha = 0.16f * presence),
                 radius = size.minDimension * 0.34f * scale,
                 center = center,
                 style = Stroke(width = 1.dp.toPx()),

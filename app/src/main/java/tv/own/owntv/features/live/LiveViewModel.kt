@@ -68,12 +68,15 @@ import tv.own.owntv.core.launcher.LauncherIntegrationRepository
 import tv.own.owntv.core.model.MediaType
 import tv.own.owntv.core.util.throttleLatest
 import tv.own.owntv.core.model.SourceType
+import tv.own.owntv.core.parser.M3uCategoryOverrideStore
 import tv.own.owntv.core.parser.XtEpgEntry
 import tv.own.owntv.core.parser.XtreamClient
 import tv.own.owntv.core.repository.activeProfileSources
 import tv.own.owntv.core.settings.LiveBuffer
 import tv.own.owntv.core.settings.LiveLatency
 import tv.own.owntv.core.settings.SettingsRepository
+import tv.own.owntv.core.sync.SyncContentTypes
+import tv.own.owntv.core.sync.work.CatalogSyncScheduler
 import tv.own.owntv.player.LiveLadder
 import tv.own.owntv.player.LiveProgramme
 import tv.own.owntv.player.LiveStreamQuirks
@@ -99,6 +102,14 @@ data class LiveRailItem(
     val providerName: String? = null,
 )
 
+data class M3uCategoryOverrideInfo(
+    val sourceId: Long,
+    val groupTitle: String,
+    val categoryName: String,
+    val itemCount: Int,
+    val currentType: MediaType,
+)
+
 class LiveViewModel(
     private val appContext: Context,
     private val channelDao: ChannelDao,
@@ -122,6 +133,8 @@ class LiveViewModel(
     private val streamUrlResolver: tv.own.owntv.core.stalker.StreamUrlResolver,
     private val epgRepository: tv.own.owntv.core.repository.EpgRepository,
     private val externalPlayerLauncher: tv.own.owntv.core.player.ExternalPlayerLauncher,
+    private val categoryOverrideStore: M3uCategoryOverrideStore,
+    private val catalogSyncScheduler: CatalogSyncScheduler,
 ) : ViewModel() {
 
     data class ChannelMoveState(val items: List<ChannelEntity>, val activeIndex: Int, val contextKey: String)
@@ -162,6 +175,34 @@ class LiveViewModel(
             settings.setSortLive(
                 if (sortMode.value == SettingsRepository.SortMode.PLAYLIST) SettingsRepository.SortMode.ALPHA
                 else SettingsRepository.SortMode.PLAYLIST,
+            )
+        }
+    }
+
+    suspend fun m3uCategoryOverrideInfo(key: LiveKey): M3uCategoryOverrideInfo? =
+        withContext(Dispatchers.IO) {
+            val folder = key as? LiveKey.Folder ?: return@withContext null
+            val category = categoryDao.getById(folder.id) ?: return@withContext null
+            val source = sourceDao.getById(category.sourceId) ?: return@withContext null
+            if (source.type != SourceType.M3U) return@withContext null
+            M3uCategoryOverrideInfo(
+                sourceId = category.sourceId,
+                groupTitle = category.remoteId ?: category.name,
+                categoryName = category.name,
+                itemCount = channelDao.countByCategory(category.id).first(),
+                currentType = category.mediaType,
+            )
+        }
+
+    fun applyM3uCategoryOverride(info: M3uCategoryOverrideInfo, targetType: MediaType?) {
+        viewModelScope.launch(Dispatchers.IO) {
+            categoryOverrideStore.setOverride(info.sourceId, info.groupTitle, targetType)
+            val source = sourceDao.getById(info.sourceId) ?: return@launch
+            catalogSyncScheduler.enqueueSync(
+                sourceId = info.sourceId,
+                reason = "m3u_category_override",
+                contentTypes = SyncContentTypes.enabledOf(source),
+                baseItemCount = info.itemCount,
             )
         }
     }

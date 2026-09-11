@@ -70,6 +70,9 @@ import tv.own.owntv.core.database.entity.MovieEntity
 import tv.own.owntv.features.customize.MoveToCategoryDialog
 import tv.own.owntv.ui.components.TextInputDialog
 import tv.own.owntv.core.model.DownloadStatus
+import tv.own.owntv.core.model.MediaType
+import tv.own.owntv.features.live.M3uCategoryOverrideDialog
+import tv.own.owntv.features.live.M3uCategoryOverrideInfo
 import tv.own.owntv.features.live.displayLabel
 import tv.own.owntv.core.settings.PanelSection
 import tv.own.owntv.features.settings.data.BrowseColumnGap
@@ -201,6 +204,7 @@ fun MoviesScreen(
 
     // Resume flow: AUTO continues silently, ASK prompts (≥10s saved), NEVER starts from zero.
     val scope = rememberCoroutineScope()
+    var m3uCategoryOverride by remember { mutableStateOf<M3uCategoryOverrideInfo?>(null) }
     var resumePrompt by remember { mutableStateOf<Pair<MovieEntity, Long>?>(null) }
     val startMovie: (MovieEntity) -> Unit = { m ->
         scope.launch {
@@ -387,6 +391,11 @@ fun MoviesScreen(
             },
             selectedIndex = selectedIndex,
             onSelect = { idx -> railItems.getOrNull(idx)?.let { vm.select(it.key) } },
+            onLongSelect = { idx ->
+                railItems.getOrNull(idx)?.let { item ->
+                    scope.launch { m3uCategoryOverride = vm.m3uCategoryOverrideInfo(item.key) }
+                }
+            },
             listState = catListState,
             showPanel = false,
             modifier = Modifier
@@ -787,6 +796,29 @@ fun MoviesScreen(
     }
     trailerVideoKey?.let { key ->
         TrailerPlayerScreen(videoKey = key, onExit = { trailerVideoKey = null })
+    }
+
+    m3uCategoryOverride?.let { info ->
+        val autoToast = stringResource(R.string.content_m3u_category_auto_restored)
+        val movedLiveToast = stringResource(R.string.content_m3u_category_moved, stringResource(R.string.common_nav_live_tv))
+        val movedMovieToast = stringResource(R.string.content_m3u_category_moved, stringResource(R.string.common_nav_movies))
+        val movedSeriesToast = stringResource(R.string.content_m3u_category_moved, stringResource(R.string.common_nav_series))
+        M3uCategoryOverrideDialog(
+            info = info,
+            onApply = { target ->
+                vm.applyM3uCategoryOverride(info, target)
+                toast.show(
+                    when (target) {
+                        null -> autoToast
+                        MediaType.LIVE -> movedLiveToast
+                        MediaType.MOVIE -> movedMovieToast
+                        else -> movedSeriesToast
+                    },
+                )
+                m3uCategoryOverride = null
+            },
+            onDismiss = { m3uCategoryOverride = null },
+        )
     }
 
     // Move mode overlay.

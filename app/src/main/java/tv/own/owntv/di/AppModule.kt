@@ -49,10 +49,86 @@ val appModule = module {
     singleOf(::HomeFeedReader)
     viewModelOf(::HomeViewModel)
     viewModelOf(::SetupViewModel)
-    // Takes a Context first; Koin resolves it from androidContext().
-    viewModelOf(::LiveViewModel)
-    viewModelOf(::MovieViewModel)
-    viewModelOf(::SeriesViewModel)
+    viewModel {
+        LiveViewModel(
+            appContext = get(),
+            channelDao = get(),
+            categoryDao = get(),
+            favoriteDao = get(),
+            historyDao = get(),
+            userDataWriter = get(),
+            profileDao = get(),
+            sourceDao = get(),
+            settings = get(),
+            xtreamClient = get(),
+            customize = get(),
+            launcherIntegrationRepository = get(),
+            epgDao = get(),
+            epgSourceStore = get(),
+            player = get(),
+            previewEngine = get(),
+            forceMpvStore = get(),
+            contentOrderDao = get(),
+            customCategoryDao = get(),
+            streamUrlResolver = get(),
+            epgRepository = get(),
+            externalPlayerLauncher = get(),
+            categoryOverrideStore = get(),
+            catalogSyncScheduler = get(),
+        )
+    }
+    viewModel {
+        MovieViewModel(
+            movieDao = get(),
+            categoryDao = get(),
+            favoriteDao = get(),
+            historyDao = get(),
+            userDataWriter = get(),
+            progressDao = get(),
+            profileDao = get(),
+            sourceDao = get(),
+            settings = get(),
+            customize = get(),
+            player = get(),
+            downloadManager = get(),
+            launcherIntegrationRepository = get(),
+            contentOrderDao = get(),
+            customCategoryDao = get(),
+            metadata = get(),
+            externalPlayerLauncher = get(),
+            streamUrlResolver = get(),
+            subtitleController = get(),
+            categoryOverrideStore = get(),
+            catalogSyncScheduler = get(),
+        )
+    }
+    viewModel {
+        SeriesViewModel(
+            seriesDao = get(),
+            categoryDao = get(),
+            favoriteDao = get(),
+            historyDao = get(),
+            userDataWriter = get(),
+            progressDao = get(),
+            profileDao = get(),
+            sourceDao = get(),
+            seriesRepository = get(),
+            settings = get(),
+            customize = get(),
+            player = get(),
+            downloadManager = get(),
+            launcherIntegrationRepository = get(),
+            contentOrderDao = get(),
+            customCategoryDao = get(),
+            seriesSortOrderDao = get(),
+            metadata = get(),
+            externalPlayerLauncher = get(),
+            streamUrlResolver = get(),
+            subtitleController = get(),
+            categoryOverrideStore = get(),
+            catalogSyncScheduler = get(),
+        )
+    }
     viewModelOf(::SearchViewModel)
     viewModelOf(::ProfilesViewModel)
     // Activity-scoped session state for the profile gate (configuration-only retention, no saved

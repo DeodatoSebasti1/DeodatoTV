@@ -14,6 +14,7 @@ import androidx.paging.filter
 import androidx.paging.map
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.FlowPreview
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.isActive
 import kotlinx.coroutines.flow.Flow
@@ -34,6 +35,7 @@ import kotlinx.coroutines.flow.flowOf
 import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.flow.stateIn
 import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 import tv.own.owntv.core.customize.CustomizationStore
 import tv.own.owntv.core.customize.SectionCustomizations
 import tv.own.owntv.core.customize.applyCustomizations
@@ -59,11 +61,16 @@ import tv.own.owntv.core.database.entity.SeriesEntity
 import tv.own.owntv.core.database.entity.WatchHistoryEntity
 import tv.own.owntv.core.launcher.LauncherIntegrationRepository
 import tv.own.owntv.core.model.MediaType
+import tv.own.owntv.core.model.SourceType
+import tv.own.owntv.core.parser.M3uCategoryOverrideStore
+import tv.own.owntv.core.sync.SyncContentTypes
+import tv.own.owntv.core.sync.work.CatalogSyncScheduler
 import tv.own.owntv.core.util.throttleLatest
 import tv.own.owntv.core.download.DownloadManager
 import tv.own.owntv.core.repository.SeriesRepository
 import tv.own.owntv.core.storage.StorageAccess
 import tv.own.owntv.features.customize.MoveTarget
+import tv.own.owntv.features.live.M3uCategoryOverrideInfo
 import tv.own.owntv.features.live.LiveRailItem
 import tv.own.owntv.core.repository.activeProfileSources
 import tv.own.owntv.core.settings.SettingsRepository
@@ -97,6 +104,8 @@ class SeriesViewModel(
     private val externalPlayerLauncher: tv.own.owntv.core.player.ExternalPlayerLauncher,
     private val streamUrlResolver: tv.own.owntv.core.stalker.StreamUrlResolver,
     private val subtitleController: tv.own.owntv.core.subtitles.SubtitleController,
+    private val categoryOverrideStore: M3uCategoryOverrideStore,
+    private val catalogSyncScheduler: CatalogSyncScheduler,
 ) : ViewModel() {
 
     data class SeriesMoveState(val items: List<SeriesEntity>, val activeIndex: Int, val contextKey: String)
@@ -121,6 +130,34 @@ class SeriesViewModel(
     val providerNames: StateFlow<Map<Long, String>> = ctx
         .map { c -> c.sourceNames.takeIf { it.size > 1 } ?: emptyMap() }
         .stateIn(viewModelScope, SharingStarted.Eagerly, emptyMap())
+
+    suspend fun m3uCategoryOverrideInfo(key: LiveKey): M3uCategoryOverrideInfo? =
+        withContext(Dispatchers.IO) {
+            val folder = key as? LiveKey.Folder ?: return@withContext null
+            val category = categoryDao.getById(folder.id) ?: return@withContext null
+            val source = sourceDao.getById(category.sourceId) ?: return@withContext null
+            if (source.type != SourceType.M3U) return@withContext null
+            M3uCategoryOverrideInfo(
+                sourceId = category.sourceId,
+                groupTitle = category.remoteId ?: category.name,
+                categoryName = category.name,
+                itemCount = seriesDao.countByCategory(category.id).first(),
+                currentType = category.mediaType,
+            )
+        }
+
+    fun applyM3uCategoryOverride(info: M3uCategoryOverrideInfo, targetType: MediaType?) {
+        viewModelScope.launch(Dispatchers.IO) {
+            categoryOverrideStore.setOverride(info.sourceId, info.groupTitle, targetType)
+            val source = sourceDao.getById(info.sourceId) ?: return@launch
+            catalogSyncScheduler.enqueueSync(
+                sourceId = info.sourceId,
+                reason = "m3u_category_override",
+                contentTypes = SyncContentTypes.enabledOf(source),
+                baseItemCount = info.itemCount,
+            )
+        }
+    }
 
     private val folderContextKeys: StateFlow<Map<Long, String>> = ctx
         .flatMapLatest { c ->

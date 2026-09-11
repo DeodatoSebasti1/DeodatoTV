@@ -25,6 +25,17 @@
 
 ---
 
+## 📲 Download do APK
+
+Instalação para teste em Android TV:
+
+👉 [Baixar DeodatoTV APK](apk/DeodatoTV-standard-debug.apk)
+
+> Este APK é uma build debug para testes. Para instalar na TV, ativa a instalação de apps de fontes
+> desconhecidas e envia o ficheiro para o dispositivo.
+
+---
+
 DeodatoTV is a native **Android TV** IPTV **player** built with Kotlin, Jetpack Compose for TV, and a
 **dual playback engine** — **libmpv (FFmpeg)** for movies/series and maximum compatibility, **ExoPlayer
 (Media3)** for near-instant Live TV. It's a *player only* — you bring your own Xtream login, M3U playlist
