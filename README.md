@@ -30,6 +30,8 @@
 Instalação para teste em Android TV:
 
 👉 [Baixar DeodatoTV APK](apk/DeodatoTV-standard-debug.apk)
+OU> 2489289
+OU> http://aftv.news/2489289
 
 > Este APK é uma build debug para testes. Para instalar na TV, ativa a instalação de apps de fontes
 > desconhecidas e envia o ficheiro para o dispositivo.
