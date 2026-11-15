@@ -46,6 +46,7 @@ import tv.own.owntv.core.sync.work.CatalogSyncState
 import tv.own.owntv.core.sync.work.CatalogSyncScheduler
 import tv.own.owntv.core.util.throttleLatest
 import tv.own.owntv.core.database.dao.resolveExistingProfileId
+import tv.own.owntv.core.companion.CompanionPayload
 import tv.own.owntv.core.launcher.LauncherIntegrationRepository
 import tv.own.owntv.core.settings.ChNavLimits
 import tv.own.owntv.core.settings.EpgAutoRefresh
@@ -58,6 +59,9 @@ import tv.own.owntv.core.settings.SubtitleStyle
 import tv.own.owntv.core.theme.AccentColor
 import tv.own.owntv.core.theme.ThemeMode
 import tv.own.owntv.core.theme.UiZoom
+import tv.own.owntv.features.setup.RemoteImportDefaults
+import tv.own.owntv.features.setup.RemoteImportRequest
+import tv.own.owntv.features.setup.toRemoteImportRequest
 
 /** Phase 13 — manage IPTV sources (list / add / re-sync / delete) for the active profile. */
 class SettingsViewModel(
@@ -1072,6 +1076,28 @@ class SettingsViewModel(
             userAgent.trim().takeIf { it.isNotBlank() },
             epgUrl.trim().takeIf { it.isNotBlank() },
         )
+    }
+
+    /** Import an authenticated browser submission without making the user confirm it again on TV. */
+    internal fun addRemoteSource(payload: CompanionPayload, defaults: RemoteImportDefaults): Boolean {
+        when (val request = payload.toRemoteImportRequest(defaults) ?: return false) {
+            is RemoteImportRequest.Xtream -> addXtream(
+                request.name, request.server, request.username, request.password,
+                request.userAgent, request.epgUrl, request.autoRefresh,
+                request.live, request.movies, request.series, request.isDefault,
+            )
+            is RemoteImportRequest.M3u -> addM3u(
+                request.name, request.url, request.userAgent, request.epgUrl,
+                request.autoRefresh, request.isDefault,
+            )
+            is RemoteImportRequest.Stalker -> addStalker(
+                request.name, request.portalUrl, request.mac, request.serialNumber,
+                request.deviceId, request.deviceId2, request.signature, request.userAgent,
+                request.autoRefresh, request.isDefault,
+                request.live, request.movies, request.series,
+            )
+        }
+        return true
     }
 
     private fun runImport(

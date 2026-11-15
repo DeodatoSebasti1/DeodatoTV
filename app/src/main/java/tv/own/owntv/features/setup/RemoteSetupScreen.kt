@@ -33,6 +33,7 @@ import androidx.compose.ui.unit.sp
 import androidx.tv.material3.MaterialTheme
 import androidx.tv.material3.Text
 import kotlinx.coroutines.flow.Flow
+import kotlinx.coroutines.flow.first
 import tv.own.owntv.R
 import tv.own.owntv.core.companion.CompanionLink
 import tv.own.owntv.core.companion.CompanionPayload
@@ -46,9 +47,9 @@ import tv.own.owntv.ui.theme.OwnTVTheme
 
 /**
  * The Remote add-source screen: opens a small LAN web server and shows the PIN, a QR of the URL, and
- * the URL text so another device on the same Wi-Fi can fill the Add Source form. It only fills it —
- * when a submission arrives, [onPayloadReceived] hands off to the Manual form (pre-filled) where the
- * user presses Start Import. The listener stops automatically when this screen leaves composition.
+ * the URL text so another device on the same Wi-Fi can submit one source. The first authenticated
+ * submission is handed to [onPayloadReceived] and the listener stops automatically when this screen
+ * leaves composition. Handling only one payload makes a double tap in the browser idempotent here.
  */
 @Composable
 fun RemoteSetupScreen(
@@ -64,8 +65,8 @@ fun RemoteSetupScreen(
     val actionFocus = remember { FocusRequester() }
     LaunchedEffect(state::class) { runCatching { actionFocus.requestFocus() } }
 
-    // A remote submission hands off to the Manual form; the host navigates away (which stops the server).
-    LaunchedEffect(payloads) { payloads.collect(onPayloadReceived) }
+    // One QR/PIN session adds one source. A correction or another source starts a fresh session.
+    LaunchedEffect(payloads) { onPayloadReceived(payloads.first()) }
     DisposableEffect(Unit) { onDispose { onStopListener() } }
 
     Box(modifier.fillMaxSize().roundedPanel()) {

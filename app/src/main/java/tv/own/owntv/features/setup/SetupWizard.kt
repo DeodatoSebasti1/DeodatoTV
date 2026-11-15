@@ -139,8 +139,14 @@ fun Onboarding(firstRun: Boolean, onDone: (Long?) -> Unit, onCancel: () -> Unit,
                 payloads = vm.remotePayloads,
                 onStartListener = { port -> vm.startRemoteListener(port) },
                 onStopListener = { vm.stopRemoteListener() },
-                // A remote submission hands off to the pre-filled Manual form (the user presses Start Import).
-                onPayloadReceived = { step = Step.ADD_SOURCE },
+                onPayloadReceived = { payload ->
+                    val started = vm.startRemoteSource(
+                        payload,
+                        RemoteImportDefaults(defaultIptvName, defaultPlaylistName, defaultPortalName),
+                    )
+                    importOrigin = Step.ADD_SOURCE
+                    step = if (started) Step.IMPORTING else Step.ADD_SOURCE
+                },
                 onBack = { vm.stopRemoteListener(); step = Step.ADD_SOURCE_CHOOSER },
             )
             Step.ADD_SOURCE -> AddSourceScreen(
@@ -158,7 +164,7 @@ fun Onboarding(firstRun: Boolean, onDone: (Long?) -> Unit, onCancel: () -> Unit,
                     importOrigin = Step.ADD_SOURCE
                     step = Step.IMPORTING
                 },
-                // Submissions from the Remote screen land here pre-filled (type + fields).
+                // Retained only as the correction/retry path when automatic import could not start.
                 remotePayload = vm.remotePayload,
                 onRemotePayloadConsumed = { vm.consumeRemotePayload() },
                 onBack = { step = Step.ADD_SOURCE_CHOOSER },
@@ -167,10 +173,10 @@ fun Onboarding(firstRun: Boolean, onDone: (Long?) -> Unit, onCancel: () -> Unit,
             Step.IMPORTING -> ImportProgressScreen(
                 state = importState,
                 progress = progress,
-                onContinue = { vm.finish(onDone) }, // playlist + its EPG synced (auto)
+                onContinue = { vm.consumeRemotePayload(); vm.finish(onDone) }, // playlist + its EPG synced (auto)
                 onRetry = { vm.reset(); step = importOrigin },
                 onCancel = { vm.cancelImport(); step = importOrigin },
-                onBackground = { vm.continueInBackground(onDone) }, // enter the app; sync keeps running
+                onBackground = { vm.consumeRemotePayload(); vm.continueInBackground(onDone) }, // enter the app; sync keeps running
             )
             Step.EXISTING -> ExistingSourcesScreen(
                 sources = existing,

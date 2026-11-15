@@ -13,6 +13,7 @@
 
 ### ✨ New features
 
+- **📱 Sending a playlist from your phone now starts import automatically**
 - **⋯ More is the sidebar's last item, with Settings its first row**
 - **⭐ Favourites: everything you starred, on one screen**
 - **🕘 History, newest first, with your resume points**

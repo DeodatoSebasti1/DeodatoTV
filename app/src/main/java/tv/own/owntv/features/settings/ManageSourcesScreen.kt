@@ -62,6 +62,7 @@ import tv.own.owntv.features.setup.playlistAutoRefreshLabel
 import tv.own.owntv.features.setup.AddSourceChooserScreen
 import tv.own.owntv.features.setup.AddSourceScreen
 import tv.own.owntv.features.setup.RemoteSetupScreen
+import tv.own.owntv.features.setup.RemoteImportDefaults
 import tv.own.owntv.ui.components.OwnTVButton
 import tv.own.owntv.ui.components.dialogPanel
 import tv.own.owntv.ui.components.modalScrim
@@ -152,7 +153,7 @@ fun ManageSourcesScreen(onBack: () -> Unit, modifier: Modifier = Modifier) {
 
     BackHandler {
         when {
-            showAdd -> { showAdd = false; addMode = null; vm.stopRemoteListener(); vm.cancelImport() }
+            showAdd -> { showAdd = false; addMode = null; vm.stopRemoteListener(); vm.consumeRemotePayload(); vm.cancelImport() }
             editingSource != null -> editingSource = null
             else -> onBack()
         }
@@ -204,8 +205,15 @@ fun ManageSourcesScreen(onBack: () -> Unit, modifier: Modifier = Modifier) {
                         payloads = vm.remotePayloads,
                         onStartListener = { port -> vm.startRemoteListener(port) },
                         onStopListener = { vm.stopRemoteListener() },
-                        // A remote submission hands off to the pre-filled Manual form.
-                        onPayloadReceived = { addMode = AddMode.MANUAL },
+                        onPayloadReceived = { payload ->
+                            // Keep Manual selected behind the progress screen: if validation or sync
+                            // fails, Try again returns to the received details instead of a dead QR.
+                            addMode = AddMode.MANUAL
+                            vm.addRemoteSource(
+                                payload,
+                                RemoteImportDefaults(defaultIptvName, defaultPlaylistName, defaultPortalName),
+                            )
+                        },
                         onBack = { vm.stopRemoteListener(); addMode = null },
                         modifier = Modifier,
                     )
@@ -220,7 +228,7 @@ fun ManageSourcesScreen(onBack: () -> Unit, modifier: Modifier = Modifier) {
                                 deviceId2, signature, ua, autoRefresh, isDefault, live, movies, series,
                             )
                         },
-                        // Submissions from the Remote screen land here pre-filled (type + fields).
+                        // Retained only as the correction/retry path when automatic import fails.
                         remotePayload = vm.remotePayload,
                         onRemotePayloadConsumed = { vm.consumeRemotePayload() },
                         // A newly-added playlist can be made default only when others already exist.
@@ -244,7 +252,11 @@ fun ManageSourcesScreen(onBack: () -> Unit, modifier: Modifier = Modifier) {
                     Spacer(Modifier.height(4.dp))
                     Text(display?.detailText() ?: stringResource(R.string.settings_sources_preparing), style = MaterialTheme.typography.bodyMedium, color = colors.onSurfaceVariant)
                     Spacer(Modifier.height(20.dp))
-                    OwnTVButton(stringResource(R.string.common_cancel), onClick = { showAdd = false; vm.cancelImport() }, style = OwnTVButtonStyle.SECONDARY)
+                    OwnTVButton(
+                        stringResource(R.string.common_cancel),
+                        onClick = { showAdd = false; vm.consumeRemotePayload(); vm.cancelImport() },
+                        style = OwnTVButtonStyle.SECONDARY,
+                    )
                 }
                 is SettingsViewModel.ImportState.Success -> {
                     // Semi-auto EPG: ask → sync (with a live count, like the import) → done, before returning.
@@ -264,10 +276,13 @@ fun ManageSourcesScreen(onBack: () -> Unit, modifier: Modifier = Modifier) {
                                 Text(remainder, style = MaterialTheme.typography.bodyMedium, color = colors.onSurfaceVariant)
                             }
                             Spacer(Modifier.height(20.dp))
-                            OwnTVButton(stringResource(R.string.common_done), onClick = { showAdd = false; vm.resetImport() })
+                            OwnTVButton(
+                                stringResource(R.string.common_done),
+                                onClick = { vm.consumeRemotePayload(); showAdd = false; vm.resetImport() },
+                            )
                         }
                     } else {
-                        LaunchedEffect(Unit) { showAdd = false; vm.resetImport() }
+                        LaunchedEffect(Unit) { vm.consumeRemotePayload(); showAdd = false; vm.resetImport() }
                     }
                 }
                 is SettingsViewModel.ImportState.Failed -> CenterStatus {
@@ -276,7 +291,11 @@ fun ManageSourcesScreen(onBack: () -> Unit, modifier: Modifier = Modifier) {
                     Text(s.failure.displayText(), style = MaterialTheme.typography.bodyMedium, color = colors.onSurfaceVariant)
                     Spacer(Modifier.height(20.dp))
                     Row(horizontalArrangement = Arrangement.spacedBy(12.dp)) {
-                        OwnTVButton(stringResource(R.string.common_back), onClick = { showAdd = false; vm.resetImport() }, style = OwnTVButtonStyle.SECONDARY)
+                        OwnTVButton(
+                            stringResource(R.string.common_back),
+                            onClick = { vm.consumeRemotePayload(); showAdd = false; vm.resetImport() },
+                            style = OwnTVButtonStyle.SECONDARY,
+                        )
                         OwnTVButton(stringResource(R.string.settings_sources_try_again), onClick = { vm.resetImport() }, modifier = Modifier.focusRequester(errorFocus))
                     }
                 }

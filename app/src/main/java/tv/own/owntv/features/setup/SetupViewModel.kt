@@ -7,6 +7,7 @@ import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.launch
+import tv.own.owntv.core.companion.CompanionPayload
 import tv.own.owntv.core.database.entity.SourceEntity
 import tv.own.owntv.core.setup.SourceImporter
 import tv.own.owntv.core.settings.PlaylistRefresh
@@ -124,6 +125,30 @@ class SetupViewModel(
 
     fun startM3u(name: String, url: String, userAgent: String = "", epgUrl: String = "", autoRefresh: PlaylistRefresh = PlaylistRefresh.OFF) =
         runImport { importer.m3u(name, url, userAgent, epgUrl, autoRefresh) }
+
+    /**
+     * Starts the first authenticated companion submission immediately. Returning false keeps the
+     * retained payload available to the manual form, which is the safe recovery path for a local
+     * M3U upload that could not be persisted after the HTTP request was accepted.
+     */
+    internal fun startRemoteSource(payload: CompanionPayload, defaults: RemoteImportDefaults): Boolean {
+        when (val request = payload.toRemoteImportRequest(defaults) ?: return false) {
+            is RemoteImportRequest.Xtream -> startXtream(
+                request.name, request.server, request.username, request.password,
+                request.userAgent, request.epgUrl, request.autoRefresh,
+                request.live, request.movies, request.series,
+            )
+            is RemoteImportRequest.M3u -> startM3u(
+                request.name, request.url, request.userAgent, request.epgUrl, request.autoRefresh,
+            )
+            is RemoteImportRequest.Stalker -> startStalker(
+                request.name, request.portalUrl, request.mac, request.serialNumber,
+                request.deviceId, request.deviceId2, request.signature, request.userAgent,
+                request.autoRefresh, request.live, request.movies, request.series,
+            )
+        }
+        return true
+    }
 
     /**
      * Runs one import in the activity-scoped [viewModelScope] so "Run in background" can walk away
