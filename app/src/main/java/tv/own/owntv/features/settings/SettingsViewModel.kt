@@ -47,6 +47,9 @@ import tv.own.owntv.core.sync.work.CatalogSyncScheduler
 import tv.own.owntv.core.util.throttleLatest
 import tv.own.owntv.core.database.dao.resolveExistingProfileId
 import tv.own.owntv.core.companion.CompanionPayload
+import tv.own.owntv.core.companion.CompanionSourceAction
+import tv.own.owntv.core.companion.CompanionSourceActionKind
+import tv.own.owntv.core.companion.CompanionSourceSummary
 import tv.own.owntv.core.launcher.LauncherIntegrationRepository
 import tv.own.owntv.core.settings.ChNavLimits
 import tv.own.owntv.core.settings.EpgAutoRefresh
@@ -110,7 +113,31 @@ class SettingsViewModel(
     /** Retained last submission, so the Manual form pre-fills even after the Remote screen left. */
     val remotePayload get() = companion.lastPayload
 
+    /** Authenticated, source-scoped actions submitted by the phone source manager. */
+    val remoteSourceActions get() = companion.sourceActions
+
     fun startRemoteListener(port: Int) = companion.start(port)
+    fun startRemoteSourceManager(port: Int) = companion.startForSourceManager(port) {
+        val selectedDefault = defaultSourceId.value
+        sources.value.map { source ->
+            CompanionSourceSummary(
+                id = source.id,
+                name = source.name,
+                type = source.type,
+                isDefault = source.id == selectedDefault,
+            )
+        }
+    }
+
+    /** Resolve against the current list, never against browser-supplied data beyond the exact ID. */
+    fun handleRemoteSourceAction(action: CompanionSourceAction) {
+        val source = sources.value.singleOrNull { it.id == action.sourceId } ?: return
+        when (action.kind) {
+            CompanionSourceActionKind.RESYNC -> resync(source)
+            CompanionSourceActionKind.SET_DEFAULT -> setDefaultSource(source.id)
+            CompanionSourceActionKind.DELETE -> delete(source)
+        }
+    }
     fun stopRemoteListener() = companion.stop()
     fun consumeRemotePayload() = companion.consumePayload()
 

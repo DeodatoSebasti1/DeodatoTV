@@ -91,6 +91,7 @@ fun ManageSourcesScreen(onBack: () -> Unit, modifier: Modifier = Modifier) {
     val defaultPortalName = stringResource(R.string.setup_default_portal)
 
     var showAdd by remember { mutableStateOf(false) }
+    var showRemoteManager by remember { mutableStateOf(false) }
     // Within "Add source": null = the Remote|Manual chooser, else the chosen path.
     var addMode by remember { mutableStateOf<AddMode?>(null) }
     var editingSource by remember { mutableStateOf<SourceEntity?>(null) }
@@ -110,8 +111,8 @@ fun ManageSourcesScreen(onBack: () -> Unit, modifier: Modifier = Modifier) {
     // Whenever the list view is showing (no add form / edit form / delete dialog on top), restore
     // focus inside the list — not on "Add Source" as before, which is what pushed focus out of the
     // menu. contextId/contextFocus decide the specific row; firstRowFocus is the empty-list fallback.
-    LaunchedEffect(showAdd, editingSource, confirmDelete) {
-        if (showAdd || editingSource != null || confirmDelete != null) return@LaunchedEffect
+    LaunchedEffect(showAdd, showRemoteManager, editingSource, confirmDelete) {
+        if (showAdd || showRemoteManager || editingSource != null || confirmDelete != null) return@LaunchedEffect
         kotlinx.coroutines.delay(120)
         val targetId = contextId
         if (targetId != null && sources.any { it.id == targetId }) {
@@ -153,6 +154,7 @@ fun ManageSourcesScreen(onBack: () -> Unit, modifier: Modifier = Modifier) {
 
     BackHandler {
         when {
+            showRemoteManager -> { showRemoteManager = false; vm.stopRemoteListener() }
             showAdd -> { showAdd = false; addMode = null; vm.stopRemoteListener(); vm.consumeRemotePayload(); vm.cancelImport() }
             editingSource != null -> editingSource = null
             else -> onBack()
@@ -160,7 +162,26 @@ fun ManageSourcesScreen(onBack: () -> Unit, modifier: Modifier = Modifier) {
     }
 
     Box(modifier = modifier.fillMaxSize()) {
-        if (editingSource != null) {
+        if (showRemoteManager) {
+            RemoteSourceManagerScreen(
+                state = vm.remoteState.collectAsStateWithLifecycle().value,
+                payloads = vm.remotePayloads,
+                sourceActions = vm.remoteSourceActions,
+                onStartListener = vm::startRemoteSourceManager,
+                onStopListener = vm::stopRemoteListener,
+                onSourceAction = vm::handleRemoteSourceAction,
+                onPayloadReceived = { payload ->
+                    showRemoteManager = false
+                    showAdd = true
+                    addMode = AddMode.MANUAL
+                    vm.addRemoteSource(
+                        payload,
+                        RemoteImportDefaults(defaultIptvName, defaultPlaylistName, defaultPortalName),
+                    )
+                },
+                onBack = { showRemoteManager = false; vm.stopRemoteListener() },
+            )
+        } else if (editingSource != null) {
             val src = editingSource!!
             AddSourceScreen(
                 initial = src,
@@ -325,6 +346,12 @@ fun ManageSourcesScreen(onBack: () -> Unit, modifier: Modifier = Modifier) {
                 Row(verticalAlignment = Alignment.CenterVertically) {
                     Text(stringResource(R.string.settings_sources_title), style = MaterialTheme.typography.headlineLarge, color = colors.onSurface)
                     Spacer(Modifier.weight(1f))
+                    OwnTVButton(
+                        stringResource(R.string.companion_source_manager_tv_title),
+                        onClick = { showRemoteManager = true },
+                        style = OwnTVButtonStyle.SECONDARY,
+                    )
+                    Spacer(Modifier.width(10.dp))
                     OwnTVButton(stringResource(R.string.settings_sources_add), onClick = { showAdd = true }, icon = tv.own.owntv.ui.components.OwnTVIcon.ADD, modifier = Modifier.focusRequester(addFocus))
                 }
                 Spacer(Modifier.height(8.dp))

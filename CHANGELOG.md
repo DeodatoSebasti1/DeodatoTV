@@ -2,6 +2,16 @@
 
 ## v4.2.5 — unreleased
 
+### 📱 Manage playlists from your phone
+
+- **The Sources screen now has “Manage on phone”.** Open it, scan the QR code and enter the PIN to
+  see the TV's configured sources in a mobile browser. From there you can add a source, sync it now,
+  make it the default or delete it with an explicit confirmation.
+- **Credentials stay on the television.** The phone receives only each source's display name, type
+  and default marker — never the playlist URL, username, password, MAC address or provider details.
+- **Adding is immediate.** A valid source submitted from the phone starts importing on the TV without
+  a second confirmation, while sync/default/delete reuse the same safe operations as the TV screen.
+
 ### ⋯ More: the last item on the sidebar
 
 - **Settings is now one press further in, and never a hunt.** The sidebar's last item is **More**
